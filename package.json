@@ -7,5 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Scott Davis <scott@thirstyhead.com> (https://thirstyhead.com/)",
-  "license": "CC-BY-4.0"
+  "license": "CC-BY-4.0",
+  "dependencies": {
+    "@uswds/uswds": "^3.4.1"
+  },
+  "devDependencies": {
+    "@uswds/compile": "^1.0.0"
+  }
 }
