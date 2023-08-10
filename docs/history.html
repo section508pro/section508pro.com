@@ -4,30 +4,47 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pages | Public Webpages | Section 508 Pro</title>
+    <title>History | Public Webpages | Section 508 Pro</title>
     <script src="assets/uswds/dist/js/uswds-init.min.js"></script>
     <link rel="stylesheet" href="assets/uswds/dist/css/uswds.min.css" />
 
+    <!-- chart -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
     <script>
       window.addEventListener('load', init);
 
       function init(){
-        const showOriginalPageButton = document.querySelector('#showOriginalPage');
-        showOriginalPageButton.addEventListener('click', showOriginalPage);
+        drawChart();
       }
 
-      function showOriginalPage(url){
-        url = "https://www.fpacbc.usda.gov";
-        const windowFeatures = "width=400, height=600, resizable=yes, scrollbars=yes, menubar=yes, toolbar=yes, location=yes, personalbar=yes, status=yes";
-        this.originalPageWindow = window.open(url, "Original Page", windowFeatures);
-      }
+      function drawChart(){      
+        var data = {
+          // A labels array that can contain any sort of values
+          labels: ['8/1', '8/2', '8/7', '8/8', '8/9', '8/10'],
+          // Our series array that contains series objects or in this case series data arrays
+          series: [
+            [406, 1017, 1009, 24974, 23395, 10188]
+          ]
+        };
 
+        let options = {
+          low: 0,
+          showArea: true
+        };
+
+        // Create a new line chart object where as first parameter we pass in a selector
+        // that is resolving to our chart container element. The Second parameter
+        // is the actual data object.
+        new Chartist.Line('.ct-chart', data, options);
+      }
     </script>
   </head>
   <body>
   <a class="usa-skipnav" href="#main-content">Skip to main content</a>
 
   <!-- usa-banner -->
+  <!-- 
   <section
     class="usa-banner"
     aria-label="Official website of the United States government"
@@ -123,6 +140,7 @@
       </div>
     </div>
   </section>
+  -->
   <!-- usa-banner -->
 
   <!-- usa-header -->
@@ -132,7 +150,7 @@
       <div class="usa-navbar">
         <div class="usa-logo" id="-logo">
           <em class="usa-logo__text"
-              ><a href="/" title="SBA Section 508 Dashboard">SBA Section 508 Dashboard</a></em
+              ><a href="/" title="Section 508 Pro">Section 508 Pro</a></em
           >
         </div>
         <button type="button" class="usa-menu-btn">Menu</button>
@@ -191,10 +209,10 @@
                 <a href="public.html">Summary</a>
               </li>
               <li class="usa-sidenav__item">
-                <a href="history.html">History</a>
+                <a href="history.html" class="usa-current">History</a>
               </li>
               <li class="usa-sidenav__item">
-                <a href="pages.html" class="usa-current">Pages</a>
+                <a href="pages.html">Pages</a>
               </li>
             </ul>
           </nav>
@@ -210,15 +228,14 @@
           "
           id="main-content"
         >
-          <h1>Pages</h1>
+          <h1>History</h1>
           <p class="usa-intro">
+            On August 8th, 2023 we visited 9,324 federal web pages. We found 24,974 accessibility errors on those pages.
           </p>
 
-          <button id="showOriginalPage">Show Original Page</button><br>
-          <iframe src="http://localhost:9999/reports/lighthouse.html"
-                  width="75%"
-                  height="1000px"></iframe>
-        
+          <div class="ct-chart ct-perfect-fourth"></div>
+
+
         </main>
       </div>
     </div>
@@ -227,6 +244,9 @@
     <div class="grid-container usa-footer__return-to-top">
       <a href="#">Return to top</a>
     </div>
+
+    <!-- footer nav-->
+    <!--
     <div class="usa-footer__primary-section">
       <nav class="usa-footer__nav" aria-label="Footer navigation">
         <ul class="grid-row grid-gap">
@@ -277,6 +297,7 @@
         </ul>
       </nav>
     </div>
+    -->
     <div class="usa-footer__secondary-section">
       <div class="grid-container">
         <div class="grid-row grid-gap">
@@ -295,7 +316,7 @@
               />
             </div>
             <div class="mobile-lg:grid-col-auto">
-              <p class="usa-footer__logo-heading">&lt;Name of Agency&gt;</p>
+              <p class="usa-footer__logo-heading">Skyward IT Solutions</p>
             </div>
           </div>
           <div class="usa-footer__contact-links mobile-lg:grid-col-6">
@@ -342,15 +363,15 @@
               </div>
             </div>
             <p class="usa-footer__contact-heading">
-              &lt;Agency Contact Center&gt;
+              Contact us
             </p>
             <address class="usa-footer__address">
               <div class="usa-footer__contact-info grid-row grid-gap">
                 <div class="grid-col-auto">
-                  <a href="tel:1-800-555-5555">&lt;(800) 555-GOVT&gt;</a>
+                  <a href="tel:410-449-3003">(410) 449-3003</a>
                 </div>
                 <div class="grid-col-auto">
-                  <a href="mailto:info@agency.gov">&lt;info@agency.gov&gt;</a>
+                  <a href="mailto:info@skywarditsolutions.com">info@skywarditsolutions.com</a>
                 </div>
               </div>
             </address>
@@ -359,6 +380,8 @@
       </div>
     </div>
   </footer>
+
+  <!--
   <div class="usa-identifier">
     <section
       class="usa-identifier__section usa-identifier__section--masthead"
@@ -443,6 +466,8 @@
       </div>
     </section>
   </div>
-      <script src="assets/uswds/dist/js/uswds.min.js"></script>
+-->
+
+    <script src="assets/uswds/dist/js/uswds.min.js"></script>
   </body>
 </html>
