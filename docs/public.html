@@ -7,11 +7,39 @@
     <title>Public Webpages | Section 508 Pro</title>
     <script src="assets/uswds/dist/js/uswds-init.min.js"></script>
     <link rel="stylesheet" href="assets/uswds/dist/css/uswds.min.css" />
+
+    <!-- chart -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <script>
+      window.addEventListener('load', init);
+
+      function init(){
+        drawChart();
+      }
+
+      function drawChart(){      
+        var data = {
+          // A labels array that can contain any sort of values
+          labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+          // Our series array that contains series objects or in this case series data arrays
+          series: [
+            [5, 2, 4, 2, 0]
+          ]
+        };
+
+        // Create a new line chart object where as first parameter we pass in a selector
+        // that is resolving to our chart container element. The Second parameter
+        // is the actual data object.
+        new Chartist.Line('.ct-chart', data);
+      }
+    </script>
   </head>
   <body>
   <a class="usa-skipnav" href="#main-content">Skip to main content</a>
 
   <!-- usa-banner -->
+  <!-- 
   <section
     class="usa-banner"
     aria-label="Official website of the United States government"
@@ -107,6 +135,7 @@
       </div>
     </div>
   </section>
+  -->
   <!-- usa-banner -->
 
   <!-- usa-header -->
@@ -116,7 +145,7 @@
       <div class="usa-navbar">
         <div class="usa-logo" id="-logo">
           <em class="usa-logo__text"
-              ><a href="/" title="SBA Section 508 Dashboard">SBA Section 508 Dashboard</a></em
+              ><a href="/" title="Section 508 Pro">Section 508 Pro</a></em
           >
         </div>
         <button type="button" class="usa-menu-btn">Menu</button>
@@ -177,9 +206,6 @@
               <li class="usa-sidenav__item">
                 <a href="pages.html">Pages</a>
               </li>
-              <li class="usa-sidenav__item">
-                <a href="">User Journeys</a>
-              </li>
             </ul>
           </nav>
         </div>
@@ -196,348 +222,12 @@
         >
           <h1>Public Webpages</h1>
           <p class="usa-intro">
-          Public webpages are what the public uses to interact with your agency.
-          "Conformant" public webpages meet <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">WCAG 2.0 AA standards</a>, as required by <a href="https://www.section508.gov/">Section 508</a>.
+            On August 8th, 2023 we visited 8,924 federal web pages. We found 25,001 accessibility errors on those pages.
           </p>
 
-          <p>
-            <img src="/assets/img/public-webpages.png" 
-                 alt="Line chart showing all public webpages and conformant webpages">
-          </p>
-
-          <h2 id="section-heading-h2">YTD Audit Data</h2>
-          <p>
+          <div class="ct-chart ct-perfect-fourth"></div>
 
 
-            <table>
-              <col>
-              <tr>
-               <td>Date</td>
-               <td>Total Pages</td>
-               <td>Audited Pages</td>
-               <td>Conformant Pages</td>
-              </tr>
-              <tr>
-               <td>12/31/22</td>
-               <td>199,521 </td>
-               <td>187,550 </td>
-               <td>180,048 </td>
-              </tr>
-              <tr>
-               <td>12/24/22</td>
-               <td>199,521 </td>
-               <td>187,550 </td>
-               <td>180,048 </td>
-              </tr>
-              <tr>
-               <td>12/17/22</td>
-               <td>199,521 </td>
-               <td>187,550 </td>
-               <td>180,048 </td>
-              </tr>
-              <tr>
-               <td>12/10/22</td>
-               <td>199,521 </td>
-               <td>187,550 </td>
-               <td>180,048 </td>
-              </tr>
-              <tr>
-               <td>12/03/22</td>
-               <td>199,521 </td>
-               <td>187,550 </td>
-               <td>180,048 </td>
-              </tr>
-              <tr>
-               <td>11/26/22</td>
-               <td>199,521 </td>
-               <td>187,550 </td>
-               <td>180,048 </td>
-              </tr>
-              <tr>
-               <td>11/19/22</td>
-               <td>199,521 </td>
-               <td>187,550 </td>
-               <td>180,048 </td>
-              </tr>
-              <tr>
-               <td>11/12/22</td>
-               <td>199,521 </td>
-               <td>187,550 </td>
-               <td>180,048 </td>
-              </tr>
-              <tr>
-               <td>11/05/22</td>
-               <td>199,521 </td>
-               <td>179,569 </td>
-               <td>165,203 </td>
-              </tr>
-              <tr>
-               <td>10/29/22</td>
-               <td>199,521 </td>
-               <td>179,569 </td>
-               <td>165,203 </td>
-              </tr>
-              <tr>
-               <td>10/22/22</td>
-               <td>199,521 </td>
-               <td>179,569 </td>
-               <td>165,203 </td>
-              </tr>
-              <tr>
-               <td>10/15/22</td>
-               <td>199,521 </td>
-               <td>179,569 </td>
-               <td>165,203 </td>
-              </tr>
-              <tr>
-               <td>10/08/22</td>
-               <td>199,521 </td>
-               <td>179,569 </td>
-               <td>165,203 </td>
-              </tr>
-              <tr>
-               <td>10/01/22</td>
-               <td>199,521 </td>
-               <td>179,569 </td>
-               <td>159,816 </td>
-              </tr>
-              <tr>
-               <td>09/24/22</td>
-               <td>199,521 </td>
-               <td>179,569 </td>
-               <td>159,816 </td>
-              </tr>
-              <tr>
-               <td>09/17/22</td>
-               <td>199,521 </td>
-               <td>179,569 </td>
-               <td>159,816 </td>
-              </tr>
-              <tr>
-               <td>09/10/22</td>
-               <td>199,521 </td>
-               <td>171,588 </td>
-               <td>152,713 </td>
-              </tr>
-              <tr>
-               <td>09/03/22</td>
-               <td>198,887 </td>
-               <td>171,043 </td>
-               <td>152,228 </td>
-              </tr>
-              <tr>
-               <td>08/27/22</td>
-               <td>198,887 </td>
-               <td>171,043 </td>
-               <td>145,386 </td>
-              </tr>
-              <tr>
-               <td>08/20/22</td>
-               <td>198,887 </td>
-               <td>171,043 </td>
-               <td>145,386 </td>
-              </tr>
-              <tr>
-               <td>08/13/22</td>
-               <td>198,887 </td>
-               <td>171,043 </td>
-               <td>145,386 </td>
-              </tr>
-              <tr>
-               <td>08/06/22</td>
-               <td>198,887 </td>
-               <td>171,043 </td>
-               <td>145,386 </td>
-              </tr>
-              <tr>
-               <td>07/30/22</td>
-               <td>198,887 </td>
-               <td>171,043 </td>
-               <td>145,386 </td>
-              </tr>
-              <tr>
-               <td>07/23/22</td>
-               <td>198,887 </td>
-               <td>171,043 </td>
-               <td>145,386 </td>
-              </tr>
-              <tr>
-               <td>07/16/22</td>
-               <td>198,887 </td>
-               <td>165,076 </td>
-               <td>132,061 </td>
-              </tr>
-              <tr>
-               <td>07/09/22</td>
-               <td>198,887 </td>
-               <td>165,076 </td>
-               <td>132,061 </td>
-              </tr>
-              <tr>
-               <td>07/02/22</td>
-               <td>196,321 </td>
-               <td>162,946 </td>
-               <td>130,357 </td>
-              </tr>
-              <tr>
-               <td>06/25/22</td>
-               <td>196,321 </td>
-               <td>162,946 </td>
-               <td>130,357 </td>
-              </tr>
-              <tr>
-               <td>06/18/22</td>
-               <td>196,321 </td>
-               <td>162,946 </td>
-               <td>130,357 </td>
-              </tr>
-              <tr>
-               <td>06/11/22</td>
-               <td>196,321 </td>
-               <td>162,946 </td>
-               <td>130,357 </td>
-              </tr>
-              <tr>
-               <td>06/04/22</td>
-               <td>196,321 </td>
-               <td>162,946 </td>
-               <td>123,839 </td>
-              </tr>
-              <tr>
-               <td>05/28/22</td>
-               <td>196,321 </td>
-               <td>162,946 </td>
-               <td>123,839 </td>
-              </tr>
-              <tr>
-               <td>05/21/22</td>
-               <td>196,321 </td>
-               <td>162,946 </td>
-               <td>123,839 </td>
-              </tr>
-              <tr>
-               <td>05/14/22</td>
-               <td>196,321 </td>
-               <td>162,946 </td>
-               <td>123,839 </td>
-              </tr>
-              <tr>
-               <td>05/07/22</td>
-               <td>195,754 </td>
-               <td>154,646 </td>
-               <td>117,531 </td>
-              </tr>
-              <tr>
-               <td>04/30/22</td>
-               <td>195,754 </td>
-               <td>154,646 </td>
-               <td>117,531 </td>
-              </tr>
-              <tr>
-               <td>04/23/22</td>
-               <td>195,754 </td>
-               <td>154,646 </td>
-               <td>117,531 </td>
-              </tr>
-              <tr>
-               <td>04/16/22</td>
-               <td>195,754 </td>
-               <td>154,646 </td>
-               <td>112,891 </td>
-              </tr>
-              <tr>
-               <td>04/09/22</td>
-               <td>195,754 </td>
-               <td>154,646 </td>
-               <td>112,891 </td>
-              </tr>
-              <tr>
-               <td>04/02/22</td>
-               <td>195,754 </td>
-               <td>154,646 </td>
-               <td>112,891 </td>
-              </tr>
-              <tr>
-               <td>03/26/22</td>
-               <td>195,754 </td>
-               <td>154,646 </td>
-               <td>112,891 </td>
-              </tr>
-              <tr>
-               <td>03/19/22</td>
-               <td>195,754 </td>
-               <td>154,646 </td>
-               <td>112,891 </td>
-              </tr>
-              <tr>
-               <td>03/12/22</td>
-               <td>195,754 </td>
-               <td>154,646 </td>
-               <td>112,891 </td>
-              </tr>
-              <tr>
-               <td>03/05/22</td>
-               <td>193,324 </td>
-               <td>144,993 </td>
-               <td>101,495 </td>
-              </tr>
-              <tr>
-               <td>02/26/22</td>
-               <td>192,846 </td>
-               <td>144,635 </td>
-               <td>101,244 </td>
-              </tr>
-              <tr>
-               <td>02/19/22</td>
-               <td>192,846 </td>
-               <td>144,635 </td>
-               <td>101,244 </td>
-              </tr>
-              <tr>
-               <td>02/12/22</td>
-               <td>192,846 </td>
-               <td>144,635 </td>
-               <td>101,244 </td>
-              </tr>
-              <tr>
-               <td>02/05/22</td>
-               <td>192,846 </td>
-               <td>144,635 </td>
-               <td>101,244 </td>
-              </tr>
-              <tr>
-               <td>01/29/22</td>
-               <td>190,625 </td>
-               <td>133,438 </td>
-               <td>89,403 </td>
-              </tr>
-              <tr>
-               <td>01/22/22</td>
-               <td>190,625 </td>
-               <td>133,438 </td>
-               <td>89,403 </td>
-              </tr>
-              <tr>
-               <td>01/15/22</td>
-               <td>190,625 </td>
-               <td>133,438 </td>
-               <td>89,403 </td>
-              </tr>
-              <tr>
-               <td>01/08/22</td>
-               <td>189,123 </td>
-               <td>119,147 </td>
-               <td>71,488 </td>
-              </tr>
-              <tr>
-               <td>01/01/22</td>
-               <td>189,123 </td>
-               <td>28,074 </td>
-               <td>16,844 </td>
-              </tr>
-             </table>
-             
-            </p>
         </main>
       </div>
     </div>
@@ -546,6 +236,9 @@
     <div class="grid-container usa-footer__return-to-top">
       <a href="#">Return to top</a>
     </div>
+
+    <!-- footer nav-->
+    <!--
     <div class="usa-footer__primary-section">
       <nav class="usa-footer__nav" aria-label="Footer navigation">
         <ul class="grid-row grid-gap">
@@ -596,6 +289,7 @@
         </ul>
       </nav>
     </div>
+    -->
     <div class="usa-footer__secondary-section">
       <div class="grid-container">
         <div class="grid-row grid-gap">
@@ -614,7 +308,7 @@
               />
             </div>
             <div class="mobile-lg:grid-col-auto">
-              <p class="usa-footer__logo-heading">&lt;Name of Agency&gt;</p>
+              <p class="usa-footer__logo-heading">Skyward IT Solutions</p>
             </div>
           </div>
           <div class="usa-footer__contact-links mobile-lg:grid-col-6">
@@ -661,15 +355,15 @@
               </div>
             </div>
             <p class="usa-footer__contact-heading">
-              &lt;Agency Contact Center&gt;
+              Contact us
             </p>
             <address class="usa-footer__address">
               <div class="usa-footer__contact-info grid-row grid-gap">
                 <div class="grid-col-auto">
-                  <a href="tel:1-800-555-5555">&lt;(800) 555-GOVT&gt;</a>
+                  <a href="tel:410-449-3003">(410) 449-3003</a>
                 </div>
                 <div class="grid-col-auto">
-                  <a href="mailto:info@agency.gov">&lt;info@agency.gov&gt;</a>
+                  <a href="mailto:info@skywarditsolutions.com">info@skywarditsolutions.com</a>
                 </div>
               </div>
             </address>
@@ -678,6 +372,8 @@
       </div>
     </div>
   </footer>
+
+  <!--
   <div class="usa-identifier">
     <section
       class="usa-identifier__section usa-identifier__section--masthead"
@@ -762,6 +458,8 @@
       </div>
     </section>
   </div>
-      <script src="assets/uswds/dist/js/uswds.min.js"></script>
+-->
+
+    <script src="assets/uswds/dist/js/uswds.min.js"></script>
   </body>
 </html>
