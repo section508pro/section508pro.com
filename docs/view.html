@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agencies | Public Webpages | Section 508 Pro</title>
+    <title>View | Public Webpages | Section 508 Pro</title>
     <script src="assets/uswds/dist/js/uswds-init.min.js"></script>
     <link rel="stylesheet" href="assets/uswds/dist/css/uswds.min.css" />
 
@@ -22,7 +22,36 @@
       window.addEventListener('load', init);
 
       function init(){
+        const querystring = new URLSearchParams(document.location.search);
+        let website = querystring.get("website");
+        update(website); 
       }
+
+      /**
+       * Selects website from sidebar
+       * class="usa-current"
+       */
+      function update(website){
+        let sidebarMenu = document.querySelector(`#${website}`);
+        if(sidebarMenu){
+          sidebarMenu.classList.add("usa-current");
+        }else{
+          console.error(`No website found for website=${website}`);
+        }
+      }
+
+      /**
+       * Sets the page to a new state
+       */
+      function reset(){
+        let currents = document.querySelectorAll(".usa-current");
+        if(currents){
+          currents.forEach((current) => {
+            current.classList.remove("usa-current");
+          });
+        }
+      }
+
 
     </script>
   </head>
@@ -98,7 +127,7 @@
                 <a href="history.html">History</a>
               </li>
               <li class="usa-sidenav__item">
-                <a href="agencies.html" class="usa-current">Federal Agencies</a>
+                <a href="agencies.html">Federal Agencies</a>
                 <ul class="usa-sidenav__sublist">
                   <li class="usa-sidenav__item">
                     <a href="view.html?website=cns" id="cns">CNS - Corporation for National and Community Service (Americorps)</a>
@@ -203,161 +232,11 @@
           "
           id="main-content"
         >
-          <h1>Federal Agencies</h1>
+          <h1>View</h1>
           <p class="usa-intro">
-            All US Federal agencies are legally required, by <a href="https://www.access-board.gov/law/ra.html#section-508-federal-electronic-and-information-technology">Section 508 of the Rehabilitation Act</a>
-            to provide accessible websites. When <a href="https://www.cdc.gov/ncbddd/disabilityandhealth/infographic-disability-impacts-all.html">1 in 4 adults in the US have some type of disability</a>, 
-            the vital importance of this law becomes clear - a government "of the people, by the people, for the people" includes <b><i>all</i></b> people, including those with disabilities. 
           </p>
 
-          <p class="usa-intro">
-            On August 8th, 2023 we visited 9,324 federal web pages. We found 33,244 accessibility errors on those pages.
-          </p>
 
-          <p>
-            <table>
-              <tr>
-                <th>Federal Agency</th>
-                <th>Pages Audited</th>
-                <th>Accessibility Errors</th>
-              </tr>
-              <tr>
-                <td>CNS</td>
-                <td>400</td>
-                <td>1,047</td>
-              </tr>
-              <tr>
-                <td>DHS</td>
-                <td>398</td>
-                <td>925</td>
-              </tr>
-              <tr>
-                <td>DOC</td>
-                <td>398</td>
-                <td>774</td>
-              </tr>
-              <tr>
-                <td>DOE</td>
-                <td>400</td>
-                <td>12,649</td>
-              </tr>
-              <tr>
-                <td>DOI</td>
-                <td>380</td>
-                <td>825</td>
-              </tr>
-              <tr>
-                <td>DOJ</td>
-                <td>88</td>
-                <td>392</td>
-              </tr>
-              <tr>
-                <td>DOL</td>
-                <td>396</td>
-                <td>411</td>
-              </tr>
-              <tr>
-                <td>DOT</td>
-                <td>385</td>
-                <td>4,447</td>
-              </tr>
-              <tr>
-                <td>ED</td>
-                <td>66</td>
-                <td>188</td>
-              </tr>
-              <tr>
-                <td>EEOC</td>
-                <td>400</td>
-                <td>205</td>
-              </tr>
-              <tr>
-                <td>EPA</td>
-                <td>380</td>
-                <td>209</td>
-              </tr>
-              <tr>
-                <td>FCC</td>
-                <td>400</td>
-                <td>2,101</td>
-              </tr>
-              <tr>
-                <td>FDIC</td>
-                <td>120</td>
-                <td>79</td>
-              </tr>
-              <tr>
-                <td>GSA</td>
-                <td>400</td>
-                <td>85</td>
-              </tr>
-              <tr>
-                <td>HHS</td>
-                <td>400</td>
-                <td>2,009</td>
-              </tr>
-              <tr>
-                <td>HUD</td>
-                <td>387</td>
-                <td>585</td>
-              </tr>
-              <tr>
-                <td>NARA</td>
-                <td>393</td>
-                <td>1,550</td>
-              </tr>
-              <tr>
-                <td>NRC</td>
-                <td>282</td>
-                <td>150</td>
-              </tr>
-              <tr>
-                <td>NSF</td>
-                <td>71</td>
-                <td>396</td>
-              </tr>
-              <tr>
-                <td>OPM</td>
-                <td>207</td>
-                <td>895</td>
-              </tr>
-              <tr>
-                <td>PBGC</td>
-                <td>398</td>
-                <td>1,659</td>
-              </tr>
-              <tr>
-                <td>SBA</td>
-                <td>387</td>
-                <td>90</td>
-              </tr>
-              <tr>
-                <td>SSA</td>
-                <td>289</td>
-                <td>359</td>
-              </tr>
-              <tr>
-                <td>State</td>
-                <td>399</td>
-                <td>11</td>
-              </tr>
-              <tr>
-                <td>Treasury</td>
-                <td>400</td>
-                <td>221</td>
-              </tr>
-              <tr>
-                <td>USAB</td>
-                <td>299</td>
-                <td>350</td>
-              </tr>
-              <tr>
-                <td>USAID</td>
-                <td>201</td>
-                <td>602</td>
-              </tr>
-            </table>
-          </p>
 
 
         </main>
