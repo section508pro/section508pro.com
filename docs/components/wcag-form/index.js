@@ -12,18 +12,18 @@ class WcagForm extends HTMLElement{
 
     expandListener(evt){
       const expandButton = document.querySelector("#expand");
-      if(expandButton.innerHTML == "Expand"){
+      if(expandButton.innerHTML.includes("Expand")){
         document.body.querySelectorAll('details')
           .forEach((e) => {
             e.setAttribute("open", "true");
           });
-        expandButton.innerHTML = "Collapse";  
+        expandButton.innerHTML = "&#8614; Collapse";  
       }else{
         document.body.querySelectorAll('details')
           .forEach((e) => {
             e.removeAttribute("open");
           });
-        expandButton.innerHTML = "Expand";  
+        expandButton.innerHTML = "&#8615; Expand";  
       }
     }
 
@@ -31,7 +31,7 @@ class WcagForm extends HTMLElement{
       let bodyBlock = document.createElement('div');
       
       bodyBlock.innerHTML = `
-      <button id="expand" type="button">Expand</button>
+      <button id="expand" type="button">&#8615; Expand</button>
 
       <ul class="wcag-state">
         <li>
