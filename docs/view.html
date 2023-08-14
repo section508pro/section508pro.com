@@ -10,6 +10,7 @@
 
     <script src="components/wcag-form/index.js"></script>
     <script src="components/error-table/index.js"></script>
+    <script src="components/agency-nav/index.js"></script>
 
     <style>
       table, tr, td, th {
@@ -67,21 +68,21 @@
     <script>
       window.addEventListener('load', init);
 
-      function init(){     
+      async function init(){     
         // save lighthouse to wcag rules to sessionStorage
         saveLh2Wcag();
         
         const querystring = new URLSearchParams(document.location.search);
         let website = querystring.get("website");
-        update(website); 
+        await update(website); 
       }
 
       /**
        * Updates the page with new data
        */
-      function update(website){
+      async function update(website){
         reset();
-        fetchData();
+        await fetchData();
         let details = getDetails();
         
         let sidebarMenu = document.querySelector(`#${website}`);
@@ -96,6 +97,10 @@
           // 3. load Lighthouse HTML report
           let lighthouseHtml = document.querySelector("#lighthouse-html");
           lighthouseHtml.src = details.get("htmlLighthouse");
+
+          // 4. remove and add wcagErrorTable
+
+          // 5. remove and add lhErrorTable
         }else{
           console.error(`No website found for website=${website}`);
         }
@@ -116,6 +121,18 @@
         // 2. UNDO change main header
         let header = document.querySelector("#main-header");
         header.innerHTML = "";
+
+        // 3. UNDO load Lighthouse HTML report
+        let lighthouseHtml = document.querySelector("#lighthouse-html");
+        lighthouseHtml.src = '';
+
+        // 4. remove and add wcagErrorTable
+        let wcagErrorTable = document.querySelector("#wcagErrorTable");
+        // wcagErrorTable.remove();
+
+        // 5. remove and add lhErrorTable
+        let lhErrorTable = document.querySelector("#lhErrorTable");
+        // lhErrorTable.remove();
       }
 
       /**
@@ -125,12 +142,12 @@
         const details = getDetails();
         console.log(details);
 
-        saveJson("jsonAllPages");
-        saveJson("jsonErrorsSummaryLighthouse");
-        saveJson("jsonErrorsSummaryWcag");
-        saveJson("jsonLighthouse");
-        saveJson("jsonA11y");
-        saveJson("jsonA11yErrors");
+        await saveJson("jsonAllPages");
+        await saveJson("jsonErrorsSummaryLighthouse");
+        await saveJson("jsonErrorsSummaryWcag");
+        await saveJson("jsonLighthouse");
+        await saveJson("jsonA11y");
+        await saveJson("jsonA11yErrors");
       }
 
       /**
@@ -293,8 +310,6 @@
       function lh2wcag(lhKey){
         let rules = getDetails("lh2wcag");      
         return rules[lhKey];
-        // console.log(getDetails('lh2wcag'));
-        // return '[1.1.1]';
       }
 
 
@@ -374,95 +389,7 @@
               </li>
               <li class="usa-sidenav__item">
                 <a href="agencies.html">Federal Agencies</a>
-                <ul class="usa-sidenav__sublist">
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=cns" id="cns">CNS - Corporation for National and Community Service (Americorps)</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=dhs" id="dhs">DHS - Department of Homeland Security</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=doc" id="doc">DOC - Department of Commerce</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=doe" id="doe">DOE - Department of Energy</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=doi" id="doi">DOI - Department of the Interior</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=doj" id="doj">DOJ - Department of Justice</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=dol" id="dol">DOL - Department of Labor</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=dot" id="dot">DOT - Department of Transportation</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=ed" id="ed">ED - Department of Education</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=eeoc" id="eeoc">EEOC - Equal Employment Opportunity Commission </a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=epa" id="epa">EPA - Environmental Protection Agency</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=fcc" id="fcc">FCC - Federal Communications Commission</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=fdic" id="fdic">FDIC - Federal Deposit Insurance Corporation</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=gsa" id="gsa">GSA - General Services Administration</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=hhs" id="hhs">HHS - Deparment of Health and Human Services</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=hud" id="hud">HUD - Department of Housing and Urban Development</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=nara" id="nara">NARA - National Archives and Records Administration</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=ncua" id="ncua">NCUA - National Credit Union Administration</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=nrc" id="nrc">NRC - US Nuclear Regulatory Commission</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=nsf" id="nsf">NSF - National Science Foundation</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=opm" id="opm">OPM - Office of Personnel Management</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=pbgc" id="pbgc">PBGC - Pension Benefit Guaranty Corporation</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=sba" id="sba">SBA - Small Business Administration</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=sec" id="sec">SEC - Securities and Exchange Commission</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=ssa" id="ssa">SSA - Social Security Administration</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=state" id="state">State - Department of State</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=treasury" id="treasury">Treasury - Department of Treasury</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=usab" id="usab">USAB - US Access Board</a>
-                  </li>
-                  <li class="usa-sidenav__item">
-                    <a href="view.html?website=usaid" id="usaid">USAID - US Agency of International Development</a>
-                  </li>
-                </ul>
+                <agency-nav></agency-nav>
               </li>
             </ul>
           </nav>
@@ -486,13 +413,13 @@
             <div class="grid-row">
               <div class="tablet:grid-col">
                 <h2>WCAG</h2>
-                <error-table data-error-type="wcag"></error-table>
+                <error-table id="wcagErrorTable" data-error-type="wcag"></error-table>
                 <wcag-form></wcag-form>
               </div>
 
               <div class="tablet:grid-col">
                 <h2>Lighthouse</h2>
-                <error-table data-error-type="lighthouse"></error-table>
+                <error-table id="lhErrorTable" data-error-type="lighthouse"></error-table>
                 <iframe src=""
                         id="lighthouse-html"
                         width="100%"
