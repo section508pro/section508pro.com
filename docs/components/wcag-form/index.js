@@ -5,12 +5,49 @@ class WcagForm extends HTMLElement{
   
     connectedCallback(){      
       this.appendChild(this.bodyBlock);
+
+      const expandButton = document.querySelector("#expand");
+      expandButton.addEventListener("click", this.expandListener);
+    }
+
+    expandListener(evt){
+      const expandButton = document.querySelector("#expand");
+      if(expandButton.innerHTML == "Expand"){
+        document.body.querySelectorAll('details')
+          .forEach((e) => {
+            e.setAttribute("open", "true");
+          });
+        expandButton.innerHTML = "Collapse";  
+      }else{
+        document.body.querySelectorAll('details')
+          .forEach((e) => {
+            e.removeAttribute("open");
+          });
+        expandButton.innerHTML = "Expand";  
+      }
     }
 
     get bodyBlock(){
       let bodyBlock = document.createElement('div');
-
+      
       bodyBlock.innerHTML = `
+      <button id="expand" type="button">Expand</button>
+
+      <ul class="wcag-state">
+        <li>
+          <input type="checkbox" id="filter-pass">
+          <span class="pass">&#10004;</span> Pass
+        </li>
+        <li>
+          <input type="checkbox" id="filter-fail">
+          <span class="fail">&#10008;</span> Fail
+        </li>
+        <li>
+          <input type="checkbox" id="filter-na">
+          <span class="na">&#8856;</span> N/A
+        </li>
+      </ul>
+
       <details data-sc="1">
         <summary><h3>1. Perceivable</h3></summary>
 
