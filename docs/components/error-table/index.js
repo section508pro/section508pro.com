@@ -34,12 +34,16 @@ class ErrorTable extends HTMLElement{
       let errorCount = 0;
       let errorType = this.dataset.errorType;
       let errors = JSON.parse(sessionStorage.getItem(`jsonA11yErrors`));
+      let lh2wcag = JSON.parse(sessionStorage.getItem(`lh2wcag`));
+
       errors.forEach(function(err) {
         let tr = table.insertRow();
         let error = tr.insertCell();
         error.appendChild(document.createTextNode(err.id));
         let count = tr.insertCell();
         count.appendChild(document.createTextNode(err.errorCount));
+        let rules = tr.insertCell();
+        rules.appendChild(document.createTextNode(lh2wcag[err.id] || "N/A"));
 
         errorCount += err.errorCount;
       })
@@ -56,7 +60,7 @@ class ErrorTable extends HTMLElement{
 
       bodyBlock.appendChild(details); 
       return bodyBlock;
-    }
+    }    
   }
   
   window.customElements.define('error-table', ErrorTable);
