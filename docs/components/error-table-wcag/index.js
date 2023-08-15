@@ -4,6 +4,24 @@ class ErrorTableWcag extends HTMLElement{
   }
 
   connectedCallback(){      
+    this.render();
+  }
+
+  static get observedAttributes() {
+    return ['reset'];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if(name == 'reset'){
+      this.render();
+    }
+  }
+
+  render(){
+    let children = this.children;
+    for(let i=0; i < children.length; i++) {
+      children[i].remove();
+    }
     this.appendChild(this.bodyBlock);
   }
 
