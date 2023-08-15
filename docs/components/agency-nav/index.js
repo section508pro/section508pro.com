@@ -64,9 +64,6 @@ class AgencyNav extends HTMLElement{
             <a href="view.html?website=nara" id="nara">NARA - National Archives and Records Administration</a>
         </li>
         <li class="usa-sidenav__item">
-            <a href="view.html?website=ncua" id="ncua">NCUA - National Credit Union Administration</a>
-        </li>
-        <li class="usa-sidenav__item">
             <a href="view.html?website=nrc" id="nrc">NRC - US Nuclear Regulatory Commission</a>
         </li>
         <li class="usa-sidenav__item">
