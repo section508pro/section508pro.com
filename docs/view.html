@@ -76,15 +76,15 @@
         
         const querystring = new URLSearchParams(document.location.search);
         let website = querystring.get("website");
-        await update(website); 
+        update(website); 
       }
 
       /**
        * Updates the page with new data
        */
-      async function update(website){
+      function update(website){
         reset();
-        await fetchData();
+        fetchData();
         let details = getDetails();
         
         let sidebarMenu = document.querySelector(`#${website}`);
