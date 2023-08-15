@@ -7,10 +7,12 @@
     <title>View | Public Webpages | Section 508 Pro</title>
     <script src="assets/uswds/dist/js/uswds-init.min.js"></script>
     <link rel="stylesheet" href="assets/uswds/dist/css/uswds.min.css" />
-
+    
+    <script src="components/agency-nav/index.js"></script>
     <script src="components/wcag-form/index.js"></script>
     <script src="components/error-table/index.js"></script>
-    <script src="components/agency-nav/index.js"></script>
+    <script src="components/error-table-wcag/index.js"></script>
+    
 
     <style>
       table, tr, td, th {
@@ -413,7 +415,7 @@
             <div class="grid-row">
               <div class="tablet:grid-col">
                 <h2>WCAG</h2>
-                <error-table id="wcagErrorTable" data-error-type="wcag"></error-table>
+                <error-table-wcag id="errorTableWcag"></error-table-wcag>
                 <wcag-form></wcag-form>
               </div>
 
