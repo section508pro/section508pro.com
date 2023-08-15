@@ -45,15 +45,12 @@ class ErrorTableWcag extends HTMLElement{
     trHeader.appendChild(thCorresponds);
 
     // fetch data
-    let errors = this.fetchJson()
-      .then((data) => { console.log('xxx' + data); });
+    let errors = JSON.parse(sessionStorage.getItem(`jsonA11yErrors`));
     let lh2wcag = JSON.parse(sessionStorage.getItem(`lh2wcag`));
     
     // build body
     let errorCount = 0;
-    // errors.forEach((err) => {
-    for(let i=0; i < errors.length; i++){  
-      let err = errors[i];
+    errors.forEach((err) => {
       let wcags = lh2wcag[err.id] || [];
       wcags.forEach((wcag) => {
         let tr = table.insertRow();
@@ -66,7 +63,7 @@ class ErrorTableWcag extends HTMLElement{
 
         errorCount += err.errorCount;
       });
-    }
+    });
 
     // build summary
     let summary = document.createElement('summary');
@@ -82,30 +79,6 @@ class ErrorTableWcag extends HTMLElement{
     bodyBlock.appendChild(details); 
     return bodyBlock;
   }
-
-  /**
-   * Fetches json from data website
-   */ 
-  async fetchJson(){
-    // build URL
-    const querystring = new URLSearchParams(document.location.search);
-    let website = querystring.get("website");
-    let baseUrl = `https://section508pro.github.io/508-${website}-data`;
-    // need type, date
-    let type = 'mobile';
-    let date = '2023-08-08';
-    let dateUrl = `${baseUrl}/reports/${type}/${date}`;
-    //need webpage
-    let webpage = '/';
-    let pageUrl = `${dateUrl}/reports${webpage}`;
-    let url = `${pageUrl}/a11y-errors.json`;
-
-    await fetch(url)
-      .then((response) => { return response.json(); })
-      .then((json) => { return json; })
-      .catch((e) => {console.error(e); });
-  }
-
 }  
   
 window.customElements.define('error-table-wcag', ErrorTableWcag);
