@@ -101,10 +101,8 @@
       function syncReportSelector(){
         let typeSelector = document.querySelector("#typeSelector");
         typeSelector.value = getQS("type");
-
-        let dateSelector = document.querySelector("#dateSelector");
-        
-        
+        updateDateSelector();
+        // which, in turn, updates pageSelector
       }
 
       /**
@@ -181,6 +179,7 @@
             pageSelector.innerHTML = '';
 
             // add new pages
+            console.log(`New pages: ${json.length}`);
             json.forEach((page) => {
               let option = document.createElement('option');
               option.innerHTML = page.path;
@@ -190,6 +189,9 @@
 
               pageSelector.appendChild(option);
             });
+
+            // update page
+            //document.forms.reportSelector.submit();
           })
           .catch((err) => {
             console.error(err);
