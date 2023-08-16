@@ -4,24 +4,6 @@ class WcagErrors extends HTMLElement{
   }
 
   connectedCallback(){      
-    this.render();
-  }
-
-  static get observedAttributes() {
-    return ['reset'];
-  }
-
-  attributeChangedCallback(name, oldValue, newValue) {
-    if(name == 'reset'){
-      this.render();
-    }
-  }
-
-  render(){
-    let children = this.children;
-    for(let i=0; i < children.length; i++) {
-      children[i].remove();
-    }
     this.appendChild(this.bodyBlock);
   }
 
@@ -53,8 +35,7 @@ class WcagErrors extends HTMLElement{
     // build body (stubbed out; no data)
     let tBody = document.createElement("tbody");
     table.appendChild(tBody);
-
-    let errorCount = 0;
+    details.appendChild(table);
 
     // build summary
     let summary = document.createElement('summary');
@@ -62,7 +43,6 @@ class WcagErrors extends HTMLElement{
     summary.appendChild(document.createTextNode(`Errors:`));
     details.appendChild(summary);    
 
-    details.appendChild(table);
     bodyBlock.appendChild(details); 
     return bodyBlock;
   }

@@ -83,9 +83,11 @@
         return querystring.get(key);
       }
 
+      /**
+       * Update wcagErrors when 'newdata' event is thrown
+       */
       function updateWcagErrors(event){
         if(event.detail.key == "jsonA11yErrors"){
-          console.log(event);
           let table = document.querySelector(`#wcagErrorsTable`);          
           
           // reset tbody
@@ -130,7 +132,6 @@
       function update(website){
         reset();
         fetchData();
-        let details = getDetails();
         
         let sidebarMenu = document.querySelector(`#${website}`);
         if(sidebarMenu){
@@ -143,6 +144,7 @@
 
           // 3. load Lighthouse HTML report
           let lighthouseHtml = document.querySelector("#lighthouse-html");
+          let details = getDetails();
           lighthouseHtml.src = details.get("htmlLighthouse");
 
         }else{
@@ -169,14 +171,6 @@
         // 3. UNDO load Lighthouse HTML report
         let lighthouseHtml = document.querySelector("#lighthouse-html");
         lighthouseHtml.src = '';
-
-        // 4. reset wcagErrorTable
-        let errorTableWcag = document.querySelector("#errorTableWcag");
-        // errorTableWcag.remove();
-
-        // 5. reset lhErrorTable
-        let errorTableLh = document.querySelector("#errorTableLh");
-        // errorTableLh.remove();
       }
 
       /**
