@@ -70,7 +70,7 @@
     <script>
       window.addEventListener('load', init);
 
-      async function init(){     
+      function init(){     
         // save lighthouse to wcag rules to sessionStorage
         saveLh2Wcag();
         
@@ -100,7 +100,9 @@
           let lighthouseHtml = document.querySelector("#lighthouse-html");
           lighthouseHtml.src = details.get("htmlLighthouse");
 
-          // 4. remove and add wcagErrorTable
+          // 4. reset wcagErrorTable
+          let errorTableWcag = document.querySelector("#errorTableWcag");
+          errorTableWcag.setAttribute('reset', true);
 
           // 5. remove and add lhErrorTable
         }else{
@@ -128,13 +130,13 @@
         let lighthouseHtml = document.querySelector("#lighthouse-html");
         lighthouseHtml.src = '';
 
-        // 4. remove and add wcagErrorTable
-        let wcagErrorTable = document.querySelector("#wcagErrorTable");
-        // wcagErrorTable.remove();
+        // 4. reset wcagErrorTable
+        let errorTableWcag = document.querySelector("#errorTableWcag");
+        // errorTableWcag.remove();
 
-        // 5. remove and add lhErrorTable
-        let lhErrorTable = document.querySelector("#lhErrorTable");
-        // lhErrorTable.remove();
+        // 5. reset lhErrorTable
+        let errorTableLh = document.querySelector("#errorTableLh");
+        // errorTableLh.remove();
       }
 
       /**
@@ -144,12 +146,23 @@
         const details = getDetails();
         console.log(details);
 
-        await saveJson("jsonAllPages");
-        await saveJson("jsonErrorsSummaryLighthouse");
-        await saveJson("jsonErrorsSummaryWcag");
-        await saveJson("jsonLighthouse");
-        await saveJson("jsonA11y");
-        await saveJson("jsonA11yErrors");
+        let promises = [];
+        promises.push(saveJson("jsonAllPages"));
+        promises.push(saveJson("jsonErrorsSummaryLighthouse"));
+        promises.push(saveJson("jsonErrorsSummaryWcag"));
+        promises.push(saveJson("jsonLighthouse"));
+        promises.push(saveJson("jsonA11y"));
+        promises.push(saveJson("jsonA11yErrors"));
+        
+
+        Promise.all(promises)
+          .then((responses) => {
+            return;
+          })
+          .catch((error) => {
+            const querystring = new URLSearchParams(document.location.search);
+            console.error(`Fetch ERROR: ${querystring.get("website")} - ${error}`);
+          });
       }
 
       /**
@@ -214,9 +227,20 @@
        */ 
       async function saveJson(key){
         const details = getDetails();
-        const response = await fetch(details.get(key));
-        const json = await response.json();
-        sessionStorage.setItem(key, JSON.stringify(json, null, 2));
+        fetch(details.get(key))
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`Problem fetching ${key}: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then((json) => {
+            sessionStorage.setItem(key, JSON.stringify(json, null, 2));
+            return;
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       }
 
       /**
