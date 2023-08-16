@@ -130,7 +130,6 @@
        * Updates the page with new data
        */
       function update(website){
-        reset();
         fetchData();
         
         let sidebarMenu = document.querySelector(`#${website}`);
@@ -150,27 +149,6 @@
         }else{
           console.error(`No website found for website=${website}`);
         }
-      }
-
-      /**
-       * Resets the page to a new, empty state
-       */
-      function reset(){
-        // 1. UNDO show current on agency sidebar nav
-        let currents = document.querySelectorAll(".usa-current");
-        if(currents){
-          currents.forEach((current) => {
-            current.classList.remove("usa-current");
-          });
-        }
-        
-        // 2. UNDO change main header
-        let header = document.querySelector("#main-header");
-        header.innerHTML = "";
-
-        // 3. UNDO load Lighthouse HTML report
-        let lighthouseHtml = document.querySelector("#lighthouse-html");
-        lighthouseHtml.src = '';
       }
 
       /**
