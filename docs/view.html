@@ -10,8 +10,8 @@
     
     <script src="components/agency-nav/index.js"></script>
     <script src="components/wcag-form/index.js"></script>
-    <script src="components/error-table/index.js"></script>
     <script src="components/wcag-errors/index.js"></script>
+    <script src="components/lighthouse-errors/index.js"></script>
     
 
     <style>
@@ -72,6 +72,7 @@
 
       function init(){
         window.addEventListener('newdata', updateWcagErrors);
+        window.addEventListener('newdata', updateLighthouseErrors);
         update(getQS("website")); 
       }
 
@@ -124,6 +125,47 @@
               summary.classList.add('pass');
           }
         }        
+      }
+
+      /**
+       * Update lighthouseErrors when 'newdata' event is thrown
+       */
+       function updateLighthouseErrors(event){
+        if(event.detail.key == "jsonA11yErrors"){
+          let table = document.querySelector(`#lighthouseErrorsTable`);
+          console.log(event);
+
+          // reset tbody
+          let tbody = document.querySelector(`#lighthouseErrorsTable > tbody`);
+          tbody.remove();
+          tbody = document.createElement('tbody');
+          tbody.setAttribute('data-website', getQS('website'));
+
+          // populate data
+          let errors = event.detail.json;
+          let errorCount = 0;
+          errors.forEach((err) => {
+            let tr = tbody.insertRow();
+            let error = tr.insertCell();
+            error.appendChild(document.createTextNode(err.id));
+            let count = tr.insertCell();
+            count.appendChild(document.createTextNode(err.errorCount));
+            let rules = tr.insertCell();
+            rules.appendChild(document.createTextNode(lh2wcag(err.id)));
+
+            errorCount += err.errorCount;
+          });
+          table.appendChild(tbody);
+
+          // update summary with errorCount
+          let summary = document.querySelector(`#lighthouseErrorsSummary`);
+          summary.innerHTML = `<h3>Errors: ${errorCount}</h3>`;
+          if(errorCount > 0){
+              summary.classList.add('fail');
+          }else{
+              summary.classList.add('pass');
+          }
+        }
       }
 
       /**
@@ -396,7 +438,7 @@
 
               <div class="tablet:grid-col">
                 <h2>Lighthouse</h2>
-                <error-table id="lhErrorTable" data-error-type="lighthouse"></error-table>
+                <lighthouse-errors id="lighthouseErrors"></lighthouse-errors>
                 <iframe src=""
                         id="lighthouse-html"
                         width="100%"
