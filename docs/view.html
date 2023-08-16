@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/uswds/dist/css/uswds.min.css" />
     
     <script src="components/agency-nav/index.js"></script>
+    <script src="components/report-selectors/index.js"></script>
     <script src="components/wcag-form/index.js"></script>
     <script src="components/wcag-errors/index.js"></script>
     <script src="components/lighthouse-errors/index.js"></script>
@@ -73,6 +74,12 @@
       function init(){
         window.addEventListener('newdata', updateWcagErrors);
         window.addEventListener('newdata', updateLighthouseErrors);
+
+        syncReportSelector();
+
+        let typeSelector = document.querySelector("#typeSelector");
+        typeSelector.addEventListener('change', typeChanged);
+
         update(getQS("website")); 
       }
 
@@ -82,6 +89,21 @@
       function getQS(key){
         const querystring = new URLSearchParams(document.location.search);
         return querystring.get(key);
+      }
+
+      /**
+       * Make the reportSelector reflect the values in the querystring
+       */
+      function syncReportSelector(){
+        let typeSelector = document.querySelector("#typeSelector");
+        typeSelector.value = getQS("type");
+      }
+
+      /**
+       * Update report when typeSelector is changed (mobile | desktop)
+       */
+      function typeChanged(event){
+        document.forms.reportSelector.submit();
       }
 
       /**
@@ -424,6 +446,7 @@
           id="main-content"
         >
           <h1 id="main-header">View</h1>
+          <report-selectors></report-selectors>
           <p class="usa-intro">
           </p>
 
