@@ -29,6 +29,7 @@ class WcagErrors extends HTMLElement{
     let bodyBlock = document.createElement('div');
     let details = document.createElement('details');
     let table = document.createElement('table');
+    table.setAttribute('id', 'wcagErrorsTable');
     
     // build header
     let tHead = document.createElement("thead");
@@ -54,30 +55,11 @@ class WcagErrors extends HTMLElement{
     table.appendChild(tBody);
 
     let errorCount = 0;
-    // errors.forEach((err) => {
-    //   let wcags = lh2wcag[err.id] || [];
-    //   wcags.forEach((wcag) => {
-    //     let tr = tBody.insertRow();
-    //     let error = tr.insertCell();
-    //     error.appendChild(document.createTextNode(wcag));
-    //     let count = tr.insertCell();
-    //     count.appendChild(document.createTextNode(err.errorCount));
-    //     let rules = tr.insertCell();
-    //     rules.appendChild(document.createTextNode(err.id));
-
-    //     errorCount += err.errorCount;
-    //   });
-    // });
 
     // build summary
     let summary = document.createElement('summary');
+    summary.setAttribute('id', 'wcagErrorsSummary');
     summary.appendChild(document.createTextNode(`Errors:`));
-    // summary.appendChild(document.createTextNode(`Errors: ${errorCount}`));
-    // if(errorCount > 0){
-    //     summary.classList.add('fail');
-    // }else{
-    //     summary.classList.add('pass');
-    // }
     details.appendChild(summary);    
 
     details.appendChild(table);
