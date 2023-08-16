@@ -11,7 +11,7 @@
     <script src="components/agency-nav/index.js"></script>
     <script src="components/wcag-form/index.js"></script>
     <script src="components/error-table/index.js"></script>
-    <script src="components/error-table-wcag/index.js"></script>
+    <script src="components/wcag-errors/index.js"></script>
     
 
     <style>
@@ -71,7 +71,7 @@
       window.addEventListener('load', init);
 
       function init(){
-        window.addEventListener('newdata', updateErrorTableWcag);
+        window.addEventListener('newdata', updateWcagErrors);
 
         // save lighthouse to wcag rules to sessionStorage
         saveLh2Wcag();     
@@ -86,11 +86,13 @@
         return querystring.get(key);
       }
 
-      function updateErrorTableWcag(event){
+      function updateWcagErrors(event){
         if(event.detail.key == "jsonA11yErrors"){
           console.log(event);
-        }
-        
+          let errorTableWcag = document.querySelector(`#wcagErrors`);
+          let table = document.querySelector(`#wcagErrors > div > details > table`);
+          console.log(table);
+        }        
       }
 
       /**
@@ -481,7 +483,7 @@
             <div class="grid-row">
               <div class="tablet:grid-col">
                 <h2>WCAG</h2>
-                <error-table-wcag id="errorTableWcag"></error-table-wcag>
+                <wcag-errors id="wcagErrors"></wcag-errors>
                 <wcag-form></wcag-form>
               </div>
 

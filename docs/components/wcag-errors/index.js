@@ -1,4 +1,4 @@
-class ErrorTableWcag extends HTMLElement{
+class WcagErrors extends HTMLElement{
   constructor(){
     super();
   }
@@ -86,4 +86,4 @@ class ErrorTableWcag extends HTMLElement{
   }
 }  
   
-window.customElements.define('error-table-wcag', ErrorTableWcag);
+window.customElements.define('wcag-errors', WcagErrors);
