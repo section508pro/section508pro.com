@@ -99,7 +99,8 @@
         typeSelector.value = getQS("type");
 
         let dateSelector = document.querySelector("#dateSelector");
-        dateSelector.value = getQS("date");
+        
+        
       }
 
       /**
@@ -117,7 +118,48 @@
        * Update dateSelector based on value of typeSelector
        */
       function updateDateSelector(){
-        let pagesUrl = `https://section508pro.github.io/508-${getQS("website")}-data/reports/${document.forms.reportSelector.typeSelector.value}/index.json`;
+        let datesUrl = `https://section508pro.github.io/508-${getQS("website")}-data/reports/${document.forms.reportSelector.typeSelector.value}/index.json`;
+        fetch(datesUrl)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`Problem fetching ${datesUrl}: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then((json) => {
+            // latest date first
+            json.sort().reverse();
+
+            // empty current dates
+            let dateSelector = document.querySelector("#dateSelector");
+            dateSelector.innerHTML = '';
+
+            // add new dates
+            json.forEach((dateString) => {
+              let dateParts = dateString.split('/');
+              let date = dateParts[2];
+              let option = document.createElement('option');
+              option.innerHTML = date;
+              option.setAttribute("value", date);
+
+              // select current date (if available)
+
+              dateSelector.appendChild(option);
+            });
+
+            // update pages for new Dates
+            updatePageSelector();
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
+
+      /**
+       * Update pageSelector based on values of typeSelector and dateSelector
+       */
+       function updatePageSelector(){
+        let pagesUrl = `https://section508pro.github.io/508-${getQS("website")}-data/reports/${document.forms.reportSelector.typeSelector.value}/${document.forms.reportSelector.dateSelector.value}/ci-result.json`;
         fetch(pagesUrl)
           .then((response) => {
             if (!response.ok) {
@@ -126,23 +168,28 @@
             return response.json();
           })
           .then((json) => {
-            console.log(json.sort().reverse());
-            let dateSelector = document.querySelector("#dateSelector");
-            dateSelector.innerHTML = '';
+            // empty current pages
+            let pageSelector = document.querySelector("#pageSelector");
+            pageSelector.innerHTML = '';
 
-            json.forEach((dateString) => {
-              let dateParts = dateString.split('/');
-              let date = dateParts[2];
+            // add new pages
+            json.forEach((page) => {
               let option = document.createElement('option');
-              option.setAttribute("value", date);
-              option.innerHTML = date;
-              dateSelector.appendChild(option);
+              option.innerHTML = page.path;
+              option.setAttribute("value", page.path);
+
+              // select current page (if available)
+
+              pageSelector.appendChild(option);
             });
           })
           .catch((err) => {
             console.error(err);
           });
       }
+
+
+
 
       /**
        * Update wcagErrors when 'newdata' event is thrown
