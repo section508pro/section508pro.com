@@ -80,6 +80,10 @@
         let typeSelector = document.querySelector("#typeSelector");
         typeSelector.addEventListener('change', typeChanged);
 
+        let dateSelector = document.querySelector("#dateSelector");
+        dateSelector.addEventListener('change', dateChanged);
+
+
         update(getQS("website")); 
       }
 
@@ -107,12 +111,16 @@
        * Update report when typeSelector is changed (mobile | desktop)
        */
       function typeChanged(event){
-        // update dateSelector
         updateDateSelector();
-
-        // update pageSelector
-        // document.forms.reportSelector.submit();
       }
+
+      /**
+       * Update report when dateSelector is changed (2023-08-15)
+       */
+       function dateChanged(event){
+        updatePageSelector();
+      }
+
 
       /**
        * Update dateSelector based on value of typeSelector
