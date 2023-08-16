@@ -31,7 +31,9 @@ class ErrorTableWcag extends HTMLElement{
     let table = document.createElement('table');
     
     // build header
-    let trHeader = table.insertRow();
+    let tHead = document.createElement("thead");
+    let trHeader = tHead.insertRow();
+
     let thError = document.createElement("th");
     thError.appendChild(document.createTextNode("Error"));
     trHeader.appendChild(thError);
@@ -44,16 +46,22 @@ class ErrorTableWcag extends HTMLElement{
     thCorresponds.appendChild(document.createTextNode("Lighthouse"));     
     trHeader.appendChild(thCorresponds);
 
+    tHead.appendChild(trHeader);
+    table.appendChild(tHead);
+
     // fetch data
     let errors = JSON.parse(sessionStorage.getItem(`jsonA11yErrors`));
     let lh2wcag = JSON.parse(sessionStorage.getItem(`lh2wcag`));
     
     // build body
+    let tBody = document.createElement("tbody");
+    table.appendChild(tBody);
+
     let errorCount = 0;
     errors.forEach((err) => {
       let wcags = lh2wcag[err.id] || [];
       wcags.forEach((wcag) => {
-        let tr = table.insertRow();
+        let tr = tBody.insertRow();
         let error = tr.insertCell();
         error.appendChild(document.createTextNode(wcag));
         let count = tr.insertCell();
