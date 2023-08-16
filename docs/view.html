@@ -107,6 +107,16 @@
        */
       function typeChanged(event){
         // update dateSelector
+        updateDateSelector();
+
+        // update pageSelector
+        // document.forms.reportSelector.submit();
+      }
+
+      /**
+       * Update dateSelector based on value of typeSelector
+       */
+      function updateDateSelector(){
         let pagesUrl = `https://section508pro.github.io/508-${getQS("website")}-data/reports/${document.forms.reportSelector.typeSelector.value}/index.json`;
         fetch(pagesUrl)
           .then((response) => {
@@ -132,10 +142,6 @@
           .catch((err) => {
             console.error(err);
           });
-
-
-        // update pageSelector
-        // document.forms.reportSelector.submit();
       }
 
       /**
