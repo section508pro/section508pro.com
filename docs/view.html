@@ -72,11 +72,16 @@
 
       function init(){     
         // save lighthouse to wcag rules to sessionStorage
-        saveLh2Wcag();
-        
+        saveLh2Wcag();     
+        update(getQS("website")); 
+      }
+
+      /**
+       * Get a value from the querystring
+       */
+      function getQS(key){
         const querystring = new URLSearchParams(document.location.search);
-        let website = querystring.get("website");
-        update(website); 
+        return querystring.get(key);
       }
 
       /**
@@ -160,8 +165,7 @@
             return;
           })
           .catch((error) => {
-            const querystring = new URLSearchParams(document.location.search);
-            console.error(`Fetch ERROR: ${querystring.get("website")} - ${error}`);
+            console.error(`Fetch ERROR: ${getQS("website")} - ${error}`);
           });
       }
 
@@ -176,18 +180,17 @@
         let details = new Map();
         
         // agency
-        const querystring = new URLSearchParams(document.location.search);
-        let website = querystring.get("website");
+        let website = getQS("website");
         details.set("website", website);
 
         // type
-        details.set("type", "mobile");
+        details.set("type", getQS("type") || "mobile");
 
         // date
-        details.set("date", "2023-08-08");
+        details.set("date", getQS("date") || "2023-08-08");
 
         // webpage
-        details.set("webpage", "/");
+        details.set("webpage", getQS("webpage") || "/");
 
         // baseUrl        
         details.set("baseUrl", `https://section508pro.github.io/508-${website}-data`);
