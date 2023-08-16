@@ -28,6 +28,7 @@ class ReportSelectors extends HTMLElement{
             <option value="2023-08-15">2023-08-15</option>
           </select>
 
+          <input type="submit" value="Update">
         </form>
       `;
   

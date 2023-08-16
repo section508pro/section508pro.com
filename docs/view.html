@@ -97,13 +97,45 @@
       function syncReportSelector(){
         let typeSelector = document.querySelector("#typeSelector");
         typeSelector.value = getQS("type");
+
+        let dateSelector = document.querySelector("#dateSelector");
+        dateSelector.value = getQS("date");
       }
 
       /**
        * Update report when typeSelector is changed (mobile | desktop)
        */
       function typeChanged(event){
-        document.forms.reportSelector.submit();
+        // update dateSelector
+        let pagesUrl = `https://section508pro.github.io/508-${getQS("website")}-data/reports/${document.forms.reportSelector.typeSelector.value}/index.json`;
+        fetch(pagesUrl)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`Problem fetching ${pagesUrl}: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then((json) => {
+            console.log(json.sort().reverse());
+            let dateSelector = document.querySelector("#dateSelector");
+            dateSelector.innerHTML = '';
+
+            json.forEach((dateString) => {
+              let dateParts = dateString.split('/');
+              let date = dateParts[2];
+              let option = document.createElement('option');
+              option.setAttribute("value", date);
+              option.innerHTML = date;
+              dateSelector.appendChild(option);
+            });
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+
+
+        // update pageSelector
+        // document.forms.reportSelector.submit();
       }
 
       /**
@@ -278,6 +310,9 @@
         // jsonA11yErrors
         details.set("jsonA11yErrors", `${details.get("pageUrl")}/a11y-errors.json`);
 
+        // jsonDates
+        details.set("jsonDates",`${details.get("dateUrl")}/index.json`);
+
         return details;
       }
 
@@ -300,7 +335,7 @@
                 json: json
               }
             }));
-            return;
+            return json;
           })
           .catch((err) => {
             console.error(err);
