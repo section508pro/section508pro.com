@@ -84,6 +84,9 @@
         let dateSelector = document.querySelector("#dateSelector");
         dateSelector.addEventListener('change', dateChanged);
 
+        let pageSelector = document.querySelector("#pageSelector");
+        pageSelector.addEventListener('change', pageChanged);
+
         update(getQS("website")); 
       }
 
@@ -121,6 +124,14 @@
        function dateChanged(event){
         updatePageSelector();
       }
+
+      /**
+       * Update report when pageSelector is changed (/about)
+       */
+       function pageChanged(event){
+        // updatePageSelector();
+      }
+
 
       /**
        * Update dateSelector based on value of typeSelector
@@ -192,8 +203,9 @@
               pageSelector.appendChild(option);
             });
 
-            // update page
-            //document.forms.reportSelector.submit();
+            // update wcagErrors and lighthouseErrors for /
+            let errorsUrl = `https://section508pro.github.io/508-${getQS("website")}-data/reports/${document.forms.reportSelector.typeSelector.value}/${document.forms.reportSelector.dateSelector.value}/reports/a11y-errors.json`;
+            fetchJsonWithUrl("jsonA11yErrors", errorsUrl);
           })
           .catch((err) => {
             console.error(err);
@@ -283,6 +295,11 @@
           }else{
               summary.classList.add('pass');
           }
+
+          // update iframe with lighthouse html report
+          let lighthouseHtml = document.querySelector("#lighthouse-html");
+          let lighthouseHtmlUrl = `https://section508pro.github.io/508-${getQS("website")}-data/reports/${document.forms.reportSelector.typeSelector.value}/${document.forms.reportSelector.dateSelector.value}/reports/lighthouse.html`;
+          lighthouseHtml.src = lighthouseHtmlUrl;
         }
       }
 
