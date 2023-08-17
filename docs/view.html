@@ -72,17 +72,26 @@
       window.addEventListener('load', init);
 
       function init(){
+        syncReportSelector();
+
+        // get mobile, desktop dates
+        let mobileDatesKey = '__MOBILE_DATES__';
+        let mobileDatesUrl = `https://section508pro.github.io/508-${getQS("website")}-data/reports/mobile/index.json`;
+        let mobileDates = fetchJsonWithUrl(mobileDatesKey, mobileDatesUrl);
+
+        // let desktopDatesKey = '__DESKTOP_DATES__';
+        // let desktopDatesUrl = `https://section508pro.github.io/508-${getQS("website")}-data/reports/desktop/index.json`;
+        // let desktopDates = fetchJsonWithUrl(desktopDatesKey, desktopDatesUrl);
+
         window.addEventListener('newdata', updateWcagErrors);
         window.addEventListener('newdata', updateLighthouseErrors);
-
-        syncReportSelector();
+        window.addEventListener('newdata', updateDates);
 
         let typeSelector = document.querySelector("#typeSelector");
         typeSelector.addEventListener('change', typeChanged);
 
         let dateSelector = document.querySelector("#dateSelector");
         dateSelector.addEventListener('change', dateChanged);
-
 
         update(getQS("website")); 
       }
@@ -100,8 +109,11 @@
        */
       function syncReportSelector(){
         let typeSelector = document.querySelector("#typeSelector");
-        typeSelector.value = getQS("type");
-        updateDateSelector();
+        if(getQS("type") != null){
+          typeSelector.value = getQS("type");
+        }
+
+        //updateDateSelector();
         // which, in turn, updates pageSelector
       }
 
@@ -118,6 +130,14 @@
        function dateChanged(event){
         updatePageSelector();
       }
+
+      /**
+       * Update dateSelector when new data arrives (2023-08-15)
+       */
+       function updateDates(event){
+        updateDateSelector();
+      }
+
 
 
       /**
@@ -404,6 +424,38 @@
             console.error(err);
           });
       }
+
+      /**
+       * Fetches remote json, throws "newdata" event
+       * Also creates global variable with payload
+       */
+       async function fetchJsonWithUrl(key, url){
+        fetch(url)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`Problem fetching ${key} ${url}: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then((json) => {
+            let detail = {
+              key: key,
+              url: url,
+              json: json
+            };
+            window.dispatchEvent(new CustomEvent("newdata", {
+              detail: detail
+            }));
+            window[key] = detail;
+            console.log(window[key]);
+            return json;
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
+
+
 
       /**
        * Returns WCAG SC (Success Criteria) for Lighthouse audit key

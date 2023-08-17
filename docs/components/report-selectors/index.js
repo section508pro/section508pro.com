@@ -18,17 +18,19 @@ class ReportSelectors extends HTMLElement{
         <fieldset>
           <label for="typeSelector">Type: </label>
           <select id="typeSelector" name="type">
-            <option value="mobile">Mobile</option>
+            <option value="mobile" selected>Mobile</option>
             <option value="desktop">Desktop</option>
           </select>
 
           <label for="dateSelector">Date: </label>
           <select id="dateSelector" name="date">
+            <option value="2023-08-01">2023-08-01</option>
           </select>
 
           <br>
           <label for="pageSelector">Page: </label>
           <select id="pageSelector" name="page">
+            <option value="/">/</option>
           </select>
 
           <input type="submit" value="Update">
