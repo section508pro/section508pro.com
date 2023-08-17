@@ -129,7 +129,10 @@
        * Update report when pageSelector is changed (/about)
        */
        function pageChanged(event){
-        // updatePageSelector();
+        // update wcagErrors and lighthouseErrors for current page
+        let errorsUrl = `https://section508pro.github.io/508-${getQS("website")}-data/reports/${document.forms.reportSelector.typeSelector.value}/${document.forms.reportSelector.dateSelector.value}/reports/${document.forms.reportSelector.pageSelector.value}/a11y-errors.json`;
+        fetchJsonWithUrl("jsonA11yErrors", errorsUrl);
+
       }
 
 
@@ -298,7 +301,7 @@
 
           // update iframe with lighthouse html report
           let lighthouseHtml = document.querySelector("#lighthouse-html");
-          let lighthouseHtmlUrl = `https://section508pro.github.io/508-${getQS("website")}-data/reports/${document.forms.reportSelector.typeSelector.value}/${document.forms.reportSelector.dateSelector.value}/reports/lighthouse.html`;
+          let lighthouseHtmlUrl = `https://section508pro.github.io/508-${getQS("website")}-data/reports/${document.forms.reportSelector.typeSelector.value}/${document.forms.reportSelector.dateSelector.value}/reports/${document.forms.reportSelector.pageSelector.value}/lighthouse.html`;
           lighthouseHtml.src = lighthouseHtmlUrl;
         }
       }

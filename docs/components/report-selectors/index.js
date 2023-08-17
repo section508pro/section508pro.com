@@ -32,8 +32,8 @@ class ReportSelectors extends HTMLElement{
           <select id="pageSelector" name="page">
             <option value="/">/</option>
           </select>
+         </fieldset>
 
-          <input type="submit" value="Update">
         </form>
       `;
   
