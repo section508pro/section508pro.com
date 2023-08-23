@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,56 +10,59 @@
     <link rel="stylesheet" href="assets/uswds/dist/css/uswds.min.css" />
 
     <style>
-      table, th, td {
-        border: 1px solid black;
-      }
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
 
-      td{
-        text-align: right;        
-      }
+        td {
+            text-align: right;
+        }
 
-      #chart, #chart-table {
-        display: "inline-block";
-      }
+        #chart,
+        #chart-table {
+            display: "inline-block";
+        }
     </style>
 
     <!-- chart -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
-    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
     <script>
-      window.addEventListener('load', init);
+        window.addEventListener("load", init);
 
-      function init(){
-        drawChart();
-      }
+        function init() {
+            addChart();
+        }
 
-      function drawChart(){      
-        var data = {
-          // A labels array that can contain any sort of values
-          labels: ['8/1', '8/2', '8/7', '8/8', '8/9', '8/10'],
-          // Our series array that contains series objects or in this case series data arrays
-          series: [
-            [406, 1017, 1009, 24974, 23395, 10188]
-          ]
-        };
-
-        let options = {
-          low: 0,
-          showArea: true
-        };
-
-        // Create a new line chart object where as first parameter we pass in a selector
-        // that is resolving to our chart container element. The Second parameter
-        // is the actual data object.
-        new Chartist.Line('.ct-chart', data, options);
-      }
+        function addChart() {
+            var yourVlSpec = {
+                "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+                "width": 300,
+                "height": 200,
+                "data": { "url": "errors-summary.json" },
+                "mark": "area",
+                "encoding": {
+                    "x": { "timeUnit": "binnedutcyearmonthdate", "field": "date", "type": "temporal" },
+                    "y": { "aggregate": "sum", "field": "wcagErrorCount" }
+                }
+            };
+            vegaEmbed('#chart', yourVlSpec);
+        }
     </script>
-  </head>
-  <body>
-  <a class="usa-skipnav" href="#main-content">Skip to main content</a>
 
-  <!-- usa-banner -->
-  <!-- 
+
+</head>
+
+<body>
+    <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+
+    <!-- usa-banner -->
+    <!-- 
   <section
     class="usa-banner"
     aria-label="Official website of the United States government"
@@ -155,151 +159,159 @@
     </div>
   </section>
   -->
-  <!-- usa-banner -->
+    <!-- usa-banner -->
 
-  <!-- usa-header -->
-  <div class="usa-overlay"></div>
-  <header class="usa-header usa-header--basic">
-    <div class="usa-nav-container">
-      <div class="usa-navbar">
-        <div class="usa-logo" id="-logo">
-          <em class="usa-logo__text"
-              ><a href="/" title="Section 508 Pro">Section 508 Pro</a></em
-          >
+    <!-- usa-header -->
+    <div class="usa-overlay"></div>
+    <header class="usa-header usa-header--basic">
+        <div class="usa-nav-container">
+            <div class="usa-navbar">
+                <div class="usa-logo" id="-logo">
+                    <em class="usa-logo__text"><a href="/" title="Section 508 Pro">Section 508 Pro</a></em>
+                </div>
+                <button type="button" class="usa-menu-btn">Menu</button>
+            </div>
+            <nav aria-label="Primary navigation," class="usa-nav">
+                <button type="button" class="usa-nav__close">
+                    <img src="/assets/uswds/img/usa-icons/close.svg" role="img" alt="Close" />
+                </button>
+                <ul class="usa-nav__primary usa-accordion">
+                    <li class="usa-nav__primary-item">
+                        <a href="/public.html" class="usa-nav-link"><span>Public Webpages</span></a>
+                    </li>
+                    <li class="usa-nav__primary-item">
+                        <a href="/internal.html" class="usa-nav-link"><span>Internal Webpages</span></a>
+                    </li>
+                    <li class="usa-nav__primary-item">
+                        <a href="/documents.html" class="usa-nav-link"><span>Public Documents</span></a>
+                    </li>
+                    <li class="usa-nav__primary-item">
+                        <a href="/assessment.html" class="usa-nav-link"><span>Full Assessment</span></a>
+                    </li>
+                </ul>
+                <section aria-label="Search component">
+                    <form class="usa-search usa-search--small" role="search">
+                        <label class="usa-sr-only" for="search-field">Search</label>
+                        <input class="usa-input" id="search-field" type="search" name="search" />
+                        <button class="usa-button" type="submit">
+                            <img src="/assets/uswds/img/usa-icons-bg/search--white.svg" class="usa-search__submit-icon"
+                                alt="Search" />
+                        </button>
+                    </form>
+                </section>
+            </nav>
         </div>
-        <button type="button" class="usa-menu-btn">Menu</button>
-      </div>
-      <nav aria-label="Primary navigation," class="usa-nav">
-        <button type="button" class="usa-nav__close">
-          <img src="/assets/uswds/img/usa-icons/close.svg" role="img" alt="Close" />
-        </button>
-        <ul class="usa-nav__primary usa-accordion">
-          <li class="usa-nav__primary-item">
-            <a href="/public.html" class="usa-nav-link"><span>Public Webpages</span></a>
-          </li>
-          <li class="usa-nav__primary-item">
-            <a href="/internal.html" class="usa-nav-link"><span>Internal Webpages</span></a>
-          </li>
-          <li class="usa-nav__primary-item">
-            <a href="/documents.html" class="usa-nav-link"><span>Public Documents</span></a>
-          </li>
-          <li class="usa-nav__primary-item">
-            <a href="/assessment.html" class="usa-nav-link"><span>Full Assessment</span></a>
-          </li>
-        </ul>
-        <section aria-label="Search component">
-          <form class="usa-search usa-search--small" role="search">
-            <label class="usa-sr-only" for="search-field">Search</label>
-            <input
-              class="usa-input"
-              id="search-field"
-              type="search"
-              name="search"
-            />
-            <button class="usa-button" type="submit">
-              <img
-                src="/assets/uswds/img/usa-icons-bg/search--white.svg"
-                class="usa-search__submit-icon"
-                alt="Search"
-              />
-            </button>
-          </form>
-        </section>
-      </nav>
-    </div>
-  </header>
-  <!-- usa-header -->
+    </header>
+    <!-- usa-header -->
 
-  <!-- usa-section -->
-  <div class="usa-section">
-    <div class="grid-container">
-      <div class="grid-row grid-gap">
+    <!-- usa-section -->
+    <div class="usa-section">
+        <div class="grid-container">
+            <div class="grid-row grid-gap">
 
-        <!-- sidebar navigation -->
-        <div class="usa-layout-docs__sidenav desktop:grid-col-3">
-          <nav aria-label="Secondary navigation">
-            <ul class="usa-sidenav">
-              <li class="usa-sidenav__item">
-                <a href="public.html">Summary</a>
-              </li>
-              <li class="usa-sidenav__item">
-                <a href="history.html" class="usa-current">History</a>
-              </li>
-              <li class="usa-sidenav__item">
-                <a href="agencies.html">Federal Agencies</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
+                <!-- sidebar navigation -->
+                <div class="usa-layout-docs__sidenav desktop:grid-col-3">
+                    <nav aria-label="Secondary navigation">
+                        <ul class="usa-sidenav">
+                            <li class="usa-sidenav__item">
+                                <a href="public.html">Summary</a>
+                            </li>
+                            <li class="usa-sidenav__item">
+                                <a href="history.html" class="usa-current">History</a>
+                            </li>
+                            <li class="usa-sidenav__item">
+                                <a href="agencies.html">Federal Agencies</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
 
 
 
-        <main
-          class="
+                <main class="
             usa-layout-docs__main
             desktop:grid-col-9
             usa-prose usa-layout-docs
-          "
-          id="main-content"
-        >
-          <h1>History</h1>
-          <p class="usa-intro">
-            On August 8th, 2023 we visited 9,324 federal web pages. We found 33,244 accessibility errors on those pages.
-          </p>
+          " id="main-content">
+                    <h1>History</h1>
+                    <p class="usa-intro">
+                        On August 8th, 2023 we visited 9,324 federal web pages. We found 33,244 accessibility errors on
+                        those pages.
+                    </p>
 
-          <div class="ct-chart ct-perfect-fourth"></div>
+                    <div id="chart"></div>
 
-          <div id="chart-table">
-            <table>
-              <tr>
-                <th>Date</th>
-                <th>Pages Audited</th>
-                <th>WCAG Errors</th>
-              </tr>
-              <tr>
-                <td>2023-08-01</td>
-                <td>200</td>
-                <td>406</td>
-              </tr>
-              <tr>
-                <td>2023-08-02</td>
-                <td>400</td>
-                <td>1,017</td>
-              </tr>
-              <tr>
-                <td>2023-08-07</td>
-                <td>400</td>
-                <td>1,009</td>
-              </tr>
-              <tr>
-                <td>2023-08-08</td>
-                <td>8,924</td>
-                <td>33,256</td>
-              </tr>
-              <tr>
-                <td>2023-08-09</td>
-                <td>7,937</td>
-                <td>30,851</td>
-              </tr>
-              <tr>
-                <td>2023-08-10</td>
-                <td>7,878</td>
-                <td>10,469</td>
-              </tr>
-            </table>
+                    <div id="chart-table">
+                        <table>
+                            <tr>
+                                <th>Date</th>
+                                <th>Pages Audited</th>
+                                <th>WCAG Errors</th>
+                            </tr>
+                            <tr>
+                                <td>2023-08-08</td>
+                                <td>8,924</td>
+                                <td>66,512</td>
+                            </tr>
+                            <tr>
+                                <td>2023-08-09</td>
+                                <td>7,937</td>
+                                <td>61,702</td>
+                            </tr>
+                            <tr>
+                                <td>2023-08-10</td>
+                                <td>9,192</td>
+                                <td>66,561</td>
+                            </tr>
+                            <tr>
+                                <td>2023-08-11</td>
+                                <td>8,011</td>
+                                <td>63,282</td>
+                            </tr>
+                            <tr>
+                                <td>2023-08-12</td>
+                                <td>8,035</td>
+                                <td>61,866</td>
+                            </tr>
+                            <tr>
+                                <td>2023-08-13</td>
+                                <td>8,390</td>
+                                <td>62,468</td>
+                            </tr>
+                            <tr>
+                                <td>2023-08-14</td>
+                                <td>8,358</td>
+                                <td>67,050</td>
+                            </tr>
+                            <tr>
+                                <td>2023-08-15</td>
+                                <td>8,234</td>
+                                <td>64,840</td>
+                            </tr>
+                            <tr>
+                                <td>2023-08-16</td>
+                                <td>8,850</td>
+                                <td>66,146</td>
+                            </tr>
+                            <tr>
+                                <td>2023-08-17</td>
+                                <td>9,310</td>
+                                <td>70,358</td>
+                            </tr>
+                        </table>
 
 
-        </main>
-      </div>
+                </main>
+            </div>
+        </div>
     </div>
-  </div>
-  <footer class="usa-footer">
-    <div class="grid-container usa-footer__return-to-top">
-      <a href="#">Return to top</a>
-    </div>
+    <footer class="usa-footer">
+        <div class="grid-container usa-footer__return-to-top">
+            <a href="#">Return to top</a>
+        </div>
 
-    <!-- footer nav-->
-    <!--
+        <!-- footer nav-->
+        <!--
     <div class="usa-footer__primary-section">
       <nav class="usa-footer__nav" aria-label="Footer navigation">
         <ul class="grid-row grid-gap">
@@ -351,90 +363,64 @@
       </nav>
     </div>
     -->
-    <div class="usa-footer__secondary-section">
-      <div class="grid-container">
-        <div class="grid-row grid-gap">
-          <div
-            class="
+        <div class="usa-footer__secondary-section">
+            <div class="grid-container">
+                <div class="grid-row grid-gap">
+                    <div class="
               usa-footer__logo
               grid-row
               mobile-lg:grid-col-6 mobile-lg:grid-gap-2
-            "
-          >
-            <div class="mobile-lg:grid-col-auto">
-              <img
-                class="usa-footer__logo-img"
-                src="/assets/uswds/img/logo-img.png"
-                alt=""
-              />
-            </div>
-            <div class="mobile-lg:grid-col-auto">
-              <p class="usa-footer__logo-heading">Skyward IT Solutions</p>
-            </div>
-          </div>
-          <div class="usa-footer__contact-links mobile-lg:grid-col-6">
-            <div class="usa-footer__social-links grid-row grid-gap-1">
-              <div class="grid-col-auto">
-                <a class="usa-social-link" href="javascript:void(0);"
-                  ><img
-                    class="usa-social-link__icon"
-                    src="/assets/uswds/img/usa-icons/facebook.svg"
-                    alt="Facebook"
-                /></a>
-              </div>
-              <div class="grid-col-auto">
-                <a class="usa-social-link" href="javascript:void(0);"
-                  ><img
-                    class="usa-social-link__icon"
-                    src="/assets/uswds/img/usa-icons/twitter.svg"
-                    alt="Twitter"
-                /></a>
-              </div>
-              <div class="grid-col-auto">
-                <a class="usa-social-link" href="javascript:void(0);"
-                  ><img
-                    class="usa-social-link__icon"
-                    src="/assets/uswds/img/usa-icons/youtube.svg"
-                    alt="YouTube"
-                /></a>
-              </div>
-              <div class="grid-col-auto">
-                <a class="usa-social-link" href="javascript:void(0);"
-                  ><img
-                    class="usa-social-link__icon"
-                    src="/assets/uswds/img/usa-icons/instagram.svg"
-                    alt="Instagram"
-                /></a>
-              </div>
-              <div class="grid-col-auto">
-                <a class="usa-social-link" href="javascript:void(0);"
-                  ><img
-                    class="usa-social-link__icon"
-                    src="/assets/uswds/img/usa-icons/rss_feed.svg"
-                    alt="RSS"
-                /></a>
-              </div>
-            </div>
-            <p class="usa-footer__contact-heading">
-              Contact us
-            </p>
-            <address class="usa-footer__address">
-              <div class="usa-footer__contact-info grid-row grid-gap">
-                <div class="grid-col-auto">
-                  <a href="tel:410-449-3003">(410) 449-3003</a>
+            ">
+                        <div class="mobile-lg:grid-col-auto">
+                            <img class="usa-footer__logo-img" src="/assets/uswds/img/logo-img.png" alt="" />
+                        </div>
+                        <div class="mobile-lg:grid-col-auto">
+                            <p class="usa-footer__logo-heading">Skyward IT Solutions</p>
+                        </div>
+                    </div>
+                    <div class="usa-footer__contact-links mobile-lg:grid-col-6">
+                        <div class="usa-footer__social-links grid-row grid-gap-1">
+                            <div class="grid-col-auto">
+                                <a class="usa-social-link" href="javascript:void(0);"><img class="usa-social-link__icon"
+                                        src="/assets/uswds/img/usa-icons/facebook.svg" alt="Facebook" /></a>
+                            </div>
+                            <div class="grid-col-auto">
+                                <a class="usa-social-link" href="javascript:void(0);"><img class="usa-social-link__icon"
+                                        src="/assets/uswds/img/usa-icons/twitter.svg" alt="Twitter" /></a>
+                            </div>
+                            <div class="grid-col-auto">
+                                <a class="usa-social-link" href="javascript:void(0);"><img class="usa-social-link__icon"
+                                        src="/assets/uswds/img/usa-icons/youtube.svg" alt="YouTube" /></a>
+                            </div>
+                            <div class="grid-col-auto">
+                                <a class="usa-social-link" href="javascript:void(0);"><img class="usa-social-link__icon"
+                                        src="/assets/uswds/img/usa-icons/instagram.svg" alt="Instagram" /></a>
+                            </div>
+                            <div class="grid-col-auto">
+                                <a class="usa-social-link" href="javascript:void(0);"><img class="usa-social-link__icon"
+                                        src="/assets/uswds/img/usa-icons/rss_feed.svg" alt="RSS" /></a>
+                            </div>
+                        </div>
+                        <p class="usa-footer__contact-heading">
+                            Contact us
+                        </p>
+                        <address class="usa-footer__address">
+                            <div class="usa-footer__contact-info grid-row grid-gap">
+                                <div class="grid-col-auto">
+                                    <a href="tel:410-449-3003">(410) 449-3003</a>
+                                </div>
+                                <div class="grid-col-auto">
+                                    <a href="mailto:info@skywarditsolutions.com">info@skywarditsolutions.com</a>
+                                </div>
+                            </div>
+                        </address>
+                    </div>
                 </div>
-                <div class="grid-col-auto">
-                  <a href="mailto:info@skywarditsolutions.com">info@skywarditsolutions.com</a>
-                </div>
-              </div>
-            </address>
-          </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
-  <!--
+    <!--
   <div class="usa-identifier">
     <section
       class="usa-identifier__section usa-identifier__section--masthead"
@@ -522,5 +508,6 @@
 -->
 
     <script src="assets/uswds/dist/js/uswds.min.js"></script>
-  </body>
+</body>
+
 </html>

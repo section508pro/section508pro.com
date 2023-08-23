@@ -1,0 +1,62 @@
+[
+    {
+        "series": "wcag-errors",
+        "date": "8/8/2023",
+        "pages": 8924,
+        "wcag-errors": 33256
+    },
+    {
+        "series": "wcag-errors",
+        "date": "8/9/2023",
+        "pages": 7937,
+        "wcag-errors": 30851
+    },
+    {
+        "series": "wcag-errors",
+        "date": "8/10/2023",
+        "pages": 9192,
+        "wcag-errors": 10469
+    },
+    {
+        "series": "wcag-errors",
+        "date": "8/11/2023",
+        "pages": 8011,
+        "wcag-errors": 10469
+    },
+    {
+        "series": "wcag-errors",
+        "date": "8/12/2023",
+        "pages": 8035,
+        "wcag-errors": 10469
+    },
+    {
+        "series": "wcag-errors",
+        "date": "8/13/2023",
+        "pages": 8390,
+        "wcag-errors": 10469
+    },
+    {
+        "series": "wcag-errors",
+        "date": "8/14/2023",
+        "pages": 8358,
+        "wcag-errors": 10469
+    },
+    {
+        "series": "wcag-errors",
+        "date": "8/15/2023",
+        "pages": 8234,
+        "wcag-errors": 10469
+    },
+    {
+        "series": "wcag-errors",
+        "date": "8/16/2023",
+        "pages": 8850,
+        "wcag-errors": 10469
+    },
+    {
+        "series": "wcag-errors",
+        "date": "8/17/2023",
+        "pages": 9310,
+        "wcag-errors": 10469
+    }
+]
