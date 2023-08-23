@@ -27,6 +27,9 @@
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <!-- olli -->
+    <script src="https://cdn.jsdelivr.net/npm/olli@1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/olli-adapters@1"></script>
 
     <script>
         window.addEventListener("load", init);
@@ -48,6 +51,12 @@
                 }
             };
             vegaEmbed('#chart', yourVlSpec);
+
+            // code to render the olli treeview
+            OlliAdapters.VegaLiteAdapter(yourVlSpec).then(olliVisSpec => {
+                const olliRender = olli(olliVisSpec);
+                // document.getElementById("olli-container").append(olliRender);
+            });
         }
     </script>
 
@@ -235,6 +244,7 @@
                     </p>
 
                     <div id="chart"></div>
+                    <div id="olli-container"></div>
 
                     <div id="chart-table">
                         <table>
