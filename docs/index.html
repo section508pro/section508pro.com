@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Section 508 Pro</title>
     <script src="assets/uswds/dist/js/uswds-init.min.js"></script>
     <link rel="stylesheet" href="assets/uswds/dist/css/uswds.min.css" />
-  </head>
-<body>
-  <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+</head>
 
-  <!-- usa-banner -->
-  <!--
+<body>
+    <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+
+    <!-- usa-banner -->
+    <!--
   <section
     class="usa-banner"
     aria-label="Official website of the United States government"
@@ -109,226 +111,202 @@
     </div>
   </section>
   -->
-  <!-- usa-banner -->
+    <!-- usa-banner -->
 
-  <!-- usa-header -->
-  <div class="usa-overlay"></div>
-  <header class="usa-header usa-header--basic">
-    <div class="usa-nav-container">
-      <div class="usa-navbar">
-        <div class="usa-logo" id="-logo">
-          <em class="usa-logo__text"
-              ><a href="/" title="SBA Section 508 Dashboard">Section 508 Pro</a></em
-          >
+    <!-- usa-header -->
+    <div class="usa-overlay"></div>
+    <header class="usa-header usa-header--basic">
+        <div class="usa-nav-container">
+            <div class="usa-navbar">
+                <div class="usa-logo" id="-logo">
+                    <em class="usa-logo__text"><a href="/" title="SBA Section 508 Dashboard">Section 508 Pro</a></em>
+                </div>
+                <button type="button" class="usa-menu-btn">Menu</button>
+            </div>
+            <nav aria-label="Primary navigation," class="usa-nav">
+                <button type="button" class="usa-nav__close">
+                    <img src="/assets/uswds/img/usa-icons/close.svg" role="img" alt="Close" />
+                </button>
+                <ul class="usa-nav__primary usa-accordion">
+                    <li class="usa-nav__primary-item">
+                        <a href="/public.html" class="usa-nav-link"><span>Public Webpages</span></a>
+                    </li>
+                    <li class="usa-nav__primary-item">
+                        <a href="/internal.html" class="usa-nav-link"><span>Internal Webpages</span></a>
+                    </li>
+                    <li class="usa-nav__primary-item">
+                        <a href="/documents.html" class="usa-nav-link"><span>Public Documents</span></a>
+                    </li>
+                    <li class="usa-nav__primary-item">
+                        <a href="/assessment.html" class="usa-nav-link"><span>Full Assessment</span></a>
+                    </li>
+                </ul>
+                <section aria-label="Search component">
+                    <form class="usa-search usa-search--small" role="search">
+                        <label class="usa-sr-only" for="search-field">Search</label>
+                        <input class="usa-input" id="search-field" type="search" name="search" />
+                        <button class="usa-button" type="submit">
+                            <img src="/assets/uswds/img/usa-icons-bg/search--white.svg" class="usa-search__submit-icon"
+                                alt="Search" />
+                        </button>
+                    </form>
+                </section>
+            </nav>
         </div>
-        <button type="button" class="usa-menu-btn">Menu</button>
-      </div>
-      <nav aria-label="Primary navigation," class="usa-nav">
-        <button type="button" class="usa-nav__close">
-          <img src="/assets/uswds/img/usa-icons/close.svg" role="img" alt="Close" />
-        </button>
-        <ul class="usa-nav__primary usa-accordion">
-          <li class="usa-nav__primary-item">
-            <a href="/public.html" class="usa-nav-link"><span>Public Webpages</span></a>
-          </li>
-          <li class="usa-nav__primary-item">
-            <a href="/internal.html" class="usa-nav-link"><span>Internal Webpages</span></a>
-          </li>
-          <li class="usa-nav__primary-item">
-            <a href="/documents.html" class="usa-nav-link"><span>Public Documents</span></a>
-          </li>
-          <li class="usa-nav__primary-item">
-            <a href="/assessment.html" class="usa-nav-link"><span>Full Assessment</span></a>
-          </li>
-        </ul>
-        <section aria-label="Search component">
-          <form class="usa-search usa-search--small" role="search">
-            <label class="usa-sr-only" for="search-field">Search</label>
-            <input
-              class="usa-input"
-              id="search-field"
-              type="search"
-              name="search"
-            />
-            <button class="usa-button" type="submit">
-              <img
-                src="/assets/uswds/img/usa-icons-bg/search--white.svg"
-                class="usa-search__submit-icon"
-                alt="Search"
-              />
-            </button>
-          </form>
-        </section>
-      </nav>
-    </div>
-  </header>
-  <!-- usa-header -->
+    </header>
+    <!-- usa-header -->
 
-  <main id="main-content">
+    <main id="main-content">
 
-    <!-- usa-hero -->
-    <section class="usa-hero" aria-label="Introduction">
-      <div class="grid-container">
-        <div class="usa-hero__callout">
-          <h1 class="usa-hero__heading">
-            <span class="usa-hero__heading--alt">Section 508 Pro:</span>
-            Digital Accessibility Compliance at Your Fingertips 
-          </h1>
-          <!--p>
+        <!-- usa-hero -->
+        <section class="usa-hero" aria-label="Introduction">
+            <div class="grid-container">
+                <div class="usa-hero__callout">
+                    <h1 class="usa-hero__heading">
+                        <span class="usa-hero__heading--alt">Section 508 Pro:</span>
+                        Digital Accessibility Compliance at Your Fingertips
+                    </h1>
+                    <!--p>
           Section 508 compliance is more than a checklist. Section 508 Pro is a holistic tool that can help you make WCAG 2.0 AA accessibility compliance the "new normal" for your agency. 
           </p-->
-          <p>
-            On August 8th, 2023 we visited 9,324 federal web pages. 
-          </p>
-          <p>
-            We found 33,244 accessibility errors on those pages.
-          </p>
+                    <p>
+                        On August 8th, 2023 we visited 8,724 federal web pages.
+                    </p>
+                    <p>
+                        We found 66,512 accessibility errors on those pages.
+                    </p>
 
-          <!--a class="usa-button" href="https://section508.gov">Learn More About Section 508</a-->
-          <a class="usa-button" href="public.html">Want to learn more?</a>
-        </div>
-      </div>
-    </section>
-    <!-- usa-hero -->
+                    <!--a class="usa-button" href="https://section508.gov">Learn More About Section 508</a-->
+                    <a class="usa-button" href="public.html">Want to learn more?</a>
+                </div>
+            </div>
+        </section>
+        <!-- usa-hero -->
 
-    <section class="grid-container usa-section">
-      <div class="grid-row grid-gap">
-        <div class="tablet:grid-col-4">
-          <h2 class="font-heading-xl margin-top-0 tablet:margin-bottom-0">
-            Digital Accessibility Everywhere
-          </h2>
-        </div>
-        <div class="tablet:grid-col-8 usa-prose">
-          <p>
-            Whether it's your public-facing website, your downloadable documents, or 
-            internal agency communications, Section 508 ensures that everyone -- 
-            disabled and non-disabled readers alike -- can receive your message 
-            loud and clear.
-          </p>
-          <p>
-            Section 508 requires all ICT (Information and Communication Technology) 
-            that is "procured, developed, maintained, or used" by the agencies of the 
-            federal government to conform to <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">WCAG (Web Content Accessibility Guidelines)
-            2.0 AA</a> levels. Section 508 Pro helps you track your progress
-            towards these goals, every step of the way.
-          </p>
-        </div>
-      </div>
-    </section>
-    <section class="usa-graphic-list usa-section usa-section--dark">
-      <div class="grid-container">
-        <div class="usa-graphic-list__row grid-row grid-gap">
-          <div class="usa-media-block tablet:grid-col">
-            <img
-              class="usa-media-block__img"
-              src="/assets/uswds/img/circle-124.png"
-              alt=""
-            />
-            <div class="usa-media-block__body">
-              <h2 class="usa-graphic-list__heading">
-                Public Webpages 
-              </h2>
-              <p>
-                Automated testing helps identify common accessibility errors
-                before they reach the public. But WCAG 2.0 AA conformance 
-                requires manual testing, by actual humans with their Trusted Tester 
-                certification, as well. Section 508 Pro 
-                helps you track both the automated and manual testing of your 
-                public-facing website.
-              </p>
+        <section class="grid-container usa-section">
+            <div class="grid-row grid-gap">
+                <div class="tablet:grid-col-4">
+                    <h2 class="font-heading-xl margin-top-0 tablet:margin-bottom-0">
+                        Digital Accessibility Everywhere
+                    </h2>
+                </div>
+                <div class="tablet:grid-col-8 usa-prose">
+                    <p>
+                        Whether it's your public-facing website, your downloadable documents, or
+                        internal agency communications, Section 508 ensures that everyone --
+                        disabled and non-disabled readers alike -- can receive your message
+                        loud and clear.
+                    </p>
+                    <p>
+                        Section 508 requires all ICT (Information and Communication Technology)
+                        that is "procured, developed, maintained, or used" by the agencies of the
+                        federal government to conform to <a
+                            href="https://www.w3.org/WAI/standards-guidelines/wcag/">WCAG (Web Content Accessibility
+                            Guidelines)
+                            2.0 AA</a> levels. Section 508 Pro helps you track your progress
+                        towards these goals, every step of the way.
+                    </p>
+                </div>
             </div>
-          </div>
-          <div class="usa-media-block tablet:grid-col">
-            <img
-              class="usa-media-block__img"
-              src="/assets/uswds/img/circle-124.png"
-              alt=""
-            />
-            <div class="usa-media-block__body">
-              <h2 class="usa-graphic-list__heading">
-                Internal Webpages
-              </h2>
-              <p>
-                Section 508 requires all agency official communication
-                to be accessible. This includes policy announcements, surveys, 
-                forms, templates, training materials, and all intranet pages. 
-                Section 508 Pro helps you keep your internal house in order
-                and conformant. 
-              </p>
+        </section>
+        <section class="usa-graphic-list usa-section usa-section--dark">
+            <div class="grid-container">
+                <div class="usa-graphic-list__row grid-row grid-gap">
+                    <div class="usa-media-block tablet:grid-col">
+                        <img class="usa-media-block__img" src="/assets/uswds/img/circle-124.png" alt="" />
+                        <div class="usa-media-block__body">
+                            <h2 class="usa-graphic-list__heading">
+                                Public Webpages
+                            </h2>
+                            <p>
+                                Automated testing helps identify common accessibility errors
+                                before they reach the public. But WCAG 2.0 AA conformance
+                                requires manual testing, by actual humans with their Trusted Tester
+                                certification, as well. Section 508 Pro
+                                helps you track both the automated and manual testing of your
+                                public-facing website.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="usa-media-block tablet:grid-col">
+                        <img class="usa-media-block__img" src="/assets/uswds/img/circle-124.png" alt="" />
+                        <div class="usa-media-block__body">
+                            <h2 class="usa-graphic-list__heading">
+                                Internal Webpages
+                            </h2>
+                            <p>
+                                Section 508 requires all agency official communication
+                                to be accessible. This includes policy announcements, surveys,
+                                forms, templates, training materials, and all intranet pages.
+                                Section 508 Pro helps you keep your internal house in order
+                                and conformant.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="usa-graphic-list__row grid-row grid-gap">
+                    <div class="usa-media-block tablet:grid-col">
+                        <img class="usa-media-block__img" src="/assets/uswds/img/circle-124.png" alt="" />
+                        <div class="usa-media-block__body">
+                            <h2 class="usa-graphic-list__heading">
+                                Public Documents
+                            </h2>
+                            <p>
+                                WCAG 2.0 AA conformance applies to more than just web pages.
+                                All of your public-facing PDFs, Word documents, PowerPoint presentations,
+                                and more must be fully accessible as well. Section 508 Pro helps
+                                you track all of your public documents through the remediation process.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="usa-media-block tablet:grid-col">
+                        <img class="usa-media-block__img" src="/assets/uswds/img/circle-124.png" alt="" />
+                        <div class="usa-media-block__body">
+                            <h2 class="usa-graphic-list__heading">
+                                Full Assessment
+                            </h2>
+                            <p>
+                                Section 508 tracks more than the accessibility of your web pages
+                                and downloadable documents. A full Section 508 assessment tracks
+                                the accessibility maturity of your agency -- from "Ad Hoc" to "Planned"
+                                to "Resourced" to "Measured". Section 508 Pro can help you achieve the
+                                top level of organizational maturity -- "Measured".
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="usa-graphic-list__row grid-row grid-gap">
-          <div class="usa-media-block tablet:grid-col">
-            <img
-              class="usa-media-block__img"
-              src="/assets/uswds/img/circle-124.png"
-              alt=""
-            />
-            <div class="usa-media-block__body">
-              <h2 class="usa-graphic-list__heading">
-                Public Documents
-              </h2>
-              <p>
-                WCAG 2.0 AA conformance applies to more than just web pages. 
-                All of your public-facing PDFs, Word documents, PowerPoint presentations, 
-                and more must be fully accessible as well. Section 508 Pro helps
-                you track all of your public documents through the remediation process. 
-              </p>
-            </div>
-          </div>
-          <div class="usa-media-block tablet:grid-col">
-            <img
-              class="usa-media-block__img"
-              src="/assets/uswds/img/circle-124.png"
-              alt=""
-            />
-            <div class="usa-media-block__body">
-              <h2 class="usa-graphic-list__heading">
-                Full Assessment
-              </h2>
-              <p>
-                Section 508 tracks more than the accessibility of your web pages 
-                and downloadable documents. A full Section 508 assessment tracks 
-                the accessibility maturity of your agency -- from "Ad Hoc" to "Planned"
-                to "Resourced" to "Measured". Section 508 Pro can help you achieve the 
-                top level of organizational maturity -- "Measured". 
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="test-section-id" class="usa-section">
-      <div class="grid-container">
-        <h2 class="font-heading-xl margin-y-0">Section 508 Pro: Are you ready to 
-          take compliance to the next level?</h2>
-        <p class="usa-intro">
-         Section 508 compliance can be a confusing mix of technology standards, 
-         legal requirements, and organizational change management. But success is 
-         achievable, and you don't have to tackle it all on your own.
-        </p>
+        </section>
+        <section id="test-section-id" class="usa-section">
+            <div class="grid-container">
+                <h2 class="font-heading-xl margin-y-0">Section 508 Pro: Are you ready to
+                    take compliance to the next level?</h2>
+                <p class="usa-intro">
+                    Section 508 compliance can be a confusing mix of technology standards,
+                    legal requirements, and organizational change management. But success is
+                    achievable, and you don't have to tackle it all on your own.
+                </p>
 
-        <p>
-          Section 508 Pro is an open source solution that is based on best-of-breed 
-          technologies. You can't change what you can't measure, and Section 508 Pro 
-          helps you keep your finger on the pulse of your agency's accessibility journey. 
-          If you're looking for a simple to use dashboard to help keep you on course towards 
-          full Section 508 conformance, we're here to help!
-        </p>
-        <a class="usa-button usa-button--big" href="https://skywarditsolutions.com/">Contact
-          Skyward IT Solutions Today for More Information
-        </a>
-      </div>
-    </section>
-  </main>
-  <footer class="usa-footer">
-    <div class="grid-container usa-footer__return-to-top">
-      <a href="#">Return to top</a>
-    </div>
+                <p>
+                    Section 508 Pro is an open source solution that is based on best-of-breed
+                    technologies. You can't change what you can't measure, and Section 508 Pro
+                    helps you keep your finger on the pulse of your agency's accessibility journey.
+                    If you're looking for a simple to use dashboard to help keep you on course towards
+                    full Section 508 conformance, we're here to help!
+                </p>
+                <a class="usa-button usa-button--big" href="https://skywarditsolutions.com/">Contact
+                    Skyward IT Solutions Today for More Information
+                </a>
+            </div>
+        </section>
+    </main>
+    <footer class="usa-footer">
+        <div class="grid-container usa-footer__return-to-top">
+            <a href="#">Return to top</a>
+        </div>
 
-    <!-- footer nav-->
-    <!--
+        <!-- footer nav-->
+        <!--
     <div class="usa-footer__primary-section">
       <nav class="usa-footer__nav" aria-label="Footer navigation">
         <ul class="grid-row grid-gap">
@@ -380,90 +358,64 @@
       </nav>
     </div>
     -->
-    <div class="usa-footer__secondary-section">
-      <div class="grid-container">
-        <div class="grid-row grid-gap">
-          <div
-            class="
+        <div class="usa-footer__secondary-section">
+            <div class="grid-container">
+                <div class="grid-row grid-gap">
+                    <div class="
               usa-footer__logo
               grid-row
               mobile-lg:grid-col-6 mobile-lg:grid-gap-2
-            "
-          >
-            <div class="mobile-lg:grid-col-auto">
-              <img
-                class="usa-footer__logo-img"
-                src="/assets/uswds/img/logo-img.png"
-                alt=""
-              />
-            </div>
-            <div class="mobile-lg:grid-col-auto">
-              <p class="usa-footer__logo-heading">Skyward IT Solutions</p>
-            </div>
-          </div>
-          <div class="usa-footer__contact-links mobile-lg:grid-col-6">
-            <div class="usa-footer__social-links grid-row grid-gap-1">
-              <div class="grid-col-auto">
-                <a class="usa-social-link" href="javascript:void(0);"
-                  ><img
-                    class="usa-social-link__icon"
-                    src="/assets/uswds/img/usa-icons/facebook.svg"
-                    alt="Facebook"
-                /></a>
-              </div>
-              <div class="grid-col-auto">
-                <a class="usa-social-link" href="javascript:void(0);"
-                  ><img
-                    class="usa-social-link__icon"
-                    src="/assets/uswds/img/usa-icons/twitter.svg"
-                    alt="Twitter"
-                /></a>
-              </div>
-              <div class="grid-col-auto">
-                <a class="usa-social-link" href="javascript:void(0);"
-                  ><img
-                    class="usa-social-link__icon"
-                    src="/assets/uswds/img/usa-icons/youtube.svg"
-                    alt="YouTube"
-                /></a>
-              </div>
-              <div class="grid-col-auto">
-                <a class="usa-social-link" href="javascript:void(0);"
-                  ><img
-                    class="usa-social-link__icon"
-                    src="/assets/uswds/img/usa-icons/instagram.svg"
-                    alt="Instagram"
-                /></a>
-              </div>
-              <div class="grid-col-auto">
-                <a class="usa-social-link" href="javascript:void(0);"
-                  ><img
-                    class="usa-social-link__icon"
-                    src="/assets/uswds/img/usa-icons/rss_feed.svg"
-                    alt="RSS"
-                /></a>
-              </div>
-            </div>
-            <p class="usa-footer__contact-heading">
-              Contact us
-            </p>
-            <address class="usa-footer__address">
-              <div class="usa-footer__contact-info grid-row grid-gap">
-                <div class="grid-col-auto">
-                  <a href="tel:410-449-3003">(410) 449-3003</a>
+            ">
+                        <div class="mobile-lg:grid-col-auto">
+                            <img class="usa-footer__logo-img" src="/assets/uswds/img/logo-img.png" alt="" />
+                        </div>
+                        <div class="mobile-lg:grid-col-auto">
+                            <p class="usa-footer__logo-heading">Skyward IT Solutions</p>
+                        </div>
+                    </div>
+                    <div class="usa-footer__contact-links mobile-lg:grid-col-6">
+                        <div class="usa-footer__social-links grid-row grid-gap-1">
+                            <div class="grid-col-auto">
+                                <a class="usa-social-link" href="javascript:void(0);"><img class="usa-social-link__icon"
+                                        src="/assets/uswds/img/usa-icons/facebook.svg" alt="Facebook" /></a>
+                            </div>
+                            <div class="grid-col-auto">
+                                <a class="usa-social-link" href="javascript:void(0);"><img class="usa-social-link__icon"
+                                        src="/assets/uswds/img/usa-icons/twitter.svg" alt="Twitter" /></a>
+                            </div>
+                            <div class="grid-col-auto">
+                                <a class="usa-social-link" href="javascript:void(0);"><img class="usa-social-link__icon"
+                                        src="/assets/uswds/img/usa-icons/youtube.svg" alt="YouTube" /></a>
+                            </div>
+                            <div class="grid-col-auto">
+                                <a class="usa-social-link" href="javascript:void(0);"><img class="usa-social-link__icon"
+                                        src="/assets/uswds/img/usa-icons/instagram.svg" alt="Instagram" /></a>
+                            </div>
+                            <div class="grid-col-auto">
+                                <a class="usa-social-link" href="javascript:void(0);"><img class="usa-social-link__icon"
+                                        src="/assets/uswds/img/usa-icons/rss_feed.svg" alt="RSS" /></a>
+                            </div>
+                        </div>
+                        <p class="usa-footer__contact-heading">
+                            Contact us
+                        </p>
+                        <address class="usa-footer__address">
+                            <div class="usa-footer__contact-info grid-row grid-gap">
+                                <div class="grid-col-auto">
+                                    <a href="tel:410-449-3003">(410) 449-3003</a>
+                                </div>
+                                <div class="grid-col-auto">
+                                    <a href="mailto:info@skywarditsolutions.com">info@skywarditsolutions.com</a>
+                                </div>
+                            </div>
+                        </address>
+                    </div>
                 </div>
-                <div class="grid-col-auto">
-                  <a href="mailto:info@skywarditsolutions.com">info@skywarditsolutions.com</a>
-                </div>
-              </div>
-            </address>
-          </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
-  <!--
+    <!--
   <div class="usa-identifier">
     <section
       class="usa-identifier__section usa-identifier__section--masthead"
@@ -551,5 +503,6 @@
 -->
 
     <script src="assets/uswds/dist/js/uswds.min.js"></script>
-  </body>
+</body>
+
 </html>

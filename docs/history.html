@@ -45,7 +45,29 @@
                 "width": 300,
                 "height": 200,
                 "data": { "url": "errors-summary.json" },
-                "mark": "area",
+                "mark": {
+                    "type": "area",
+                    "line": {
+                        "color": "darkred"
+                    },
+                    "color": {
+                        "x1": 1,
+                        "y1": 1,
+                        "x2": 1,
+                        "y2": 0,
+                        "gradient": "linear",
+                        "stops": [
+                            {
+                                "offset": 0,
+                                "color": "red"
+                            },
+                            {
+                                "offset": 1,
+                                "color": "red"
+                            }
+                        ]
+                    }
+                },
                 "encoding": {
                     "x": { "timeUnit": "binnedutcyearmonthdate", "field": "date", "type": "temporal" },
                     "y": { "aggregate": "sum", "field": "wcagErrorCount" }
@@ -235,7 +257,7 @@
           " id="main-content">
                     <h1>History</h1>
                     <p class="usa-intro">
-                        On August 8th, 2023 we visited 9,324 federal web pages. We found 33,244 accessibility errors on
+                        On August 8th, 2023 we visited 8,724 federal web pages. We found 66,512 accessibility errors on
                         those pages.
                     </p>
 
@@ -250,52 +272,52 @@
                             </tr>
                             <tr>
                                 <td>2023-08-08</td>
-                                <td>8,924</td>
+                                <td>8,724</td>
                                 <td>66,512</td>
                             </tr>
                             <tr>
                                 <td>2023-08-09</td>
-                                <td>7,937</td>
+                                <td>7,737</td>
                                 <td>61,702</td>
                             </tr>
                             <tr>
                                 <td>2023-08-10</td>
-                                <td>9,192</td>
+                                <td>8,792</td>
                                 <td>66,561</td>
                             </tr>
                             <tr>
                                 <td>2023-08-11</td>
-                                <td>8,011</td>
+                                <td>7,811</td>
                                 <td>63,282</td>
                             </tr>
                             <tr>
                                 <td>2023-08-12</td>
-                                <td>8,035</td>
+                                <td>7,835</td>
                                 <td>61,866</td>
                             </tr>
                             <tr>
                                 <td>2023-08-13</td>
-                                <td>8,390</td>
+                                <td>8,190</td>
                                 <td>62,468</td>
                             </tr>
                             <tr>
                                 <td>2023-08-14</td>
-                                <td>8,358</td>
+                                <td>8,158</td>
                                 <td>67,050</td>
                             </tr>
                             <tr>
                                 <td>2023-08-15</td>
-                                <td>8,234</td>
+                                <td>8,034</td>
                                 <td>64,840</td>
                             </tr>
                             <tr>
                                 <td>2023-08-16</td>
-                                <td>8,850</td>
+                                <td>8,650</td>
                                 <td>66,146</td>
                             </tr>
                             <tr>
                                 <td>2023-08-17</td>
-                                <td>9,310</td>
+                                <td>9,110</td>
                                 <td>70,358</td>
                             </tr>
                         </table>
