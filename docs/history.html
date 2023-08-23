@@ -42,8 +42,8 @@
         function addChart() {
             var yourVlSpec = {
                 "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-                "width": 300,
-                "height": 200,
+                width: 500,
+                height: 454,
                 "data": { "url": "errors-summary.json" },
                 "mark": {
                     "type": "area",
@@ -66,11 +66,12 @@
                                 "color": "red"
                             }
                         ]
-                    }
+                    },
+                    "tooltip": true
                 },
                 "encoding": {
-                    "x": { "timeUnit": "binnedutcyearmonthdate", "field": "date", "type": "temporal" },
-                    "y": { "aggregate": "sum", "field": "wcagErrorCount" }
+                    "x": { "timeUnit": "binnedutcyearmonthdate", "field": "date", "type": "temporal", "title": "Date" },
+                    "y": { "aggregate": "sum", "field": "wcagErrorCount", "title": "WCAG Errors" }
                 }
             };
             vegaEmbed('#chart', yourVlSpec);
