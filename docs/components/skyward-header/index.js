@@ -39,7 +39,11 @@ class SkywardHeader extends HTMLElement {
                         <li class="usa-nav__primary-item">
                             <a href="/assessment.html" class="usa-nav-link"><span>Full Assessment</span></a>
                         </li>
+                        <li class="usa-nav__primary-item">
+                            <a href="/about.html" class="usa-nav-link"><span>About Section 508 Pro</span></a>
+                        </li>
                     </ul>
+                    <!--
                     <section aria-label="Search component">
                         <form class="usa-search usa-search--small" role="search">
                             <label class="usa-sr-only" for="search-field">Search</label>
@@ -50,6 +54,7 @@ class SkywardHeader extends HTMLElement {
                             </button>
                         </form>
                     </section>
+                    -->
                 </nav>
             </div>
         </header>
